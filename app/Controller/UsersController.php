@@ -104,47 +104,20 @@ class UsersController extends AppController {
         
         
         public function login() {
-    if ($this->request->is('post')) {
-        if ($this->Auth->login()) {
-            $this->redirect($this->Auth->redirect());
-        } else {
-            $this->Session->setFlash('Your username or password was incorrect.');
+            if ($this->request->is('post')) {
+                if ($this->Auth->login()) {
+                $this->redirect($this->Auth->redirect());
+            } else {
+                $this->Session->setFlash('Your username or password was incorrect.');
+                }
+            }
         }
-    }
-}
 
-public function logout() {
-    $this->redirect($this->Auth->logout());
-}
+        public function logout() {
+            $this->Session->setFlash('Obrigado por ter usado o nosso site !');
+            $this->redirect($this->Auth->logout());
+        }
+        
+        
 
-
-
-public function beforeFilter() {
-    parent::beforeFilter();
-    $this->Auth->allow('initDB'); // We can remove this line after we're finished
-}
-
-public function initDB() {
-    $group = $this->User->Group;
-    //Allow admins to everything
-    $group->id = 1;
-    $this->Acl->allow($group, 'controllers');
-
-    //allow managers to posts and widgets
-    $group->id = 2;
-    $this->Acl->deny($group, 'controllers');
-    $this->Acl->allow($group, 'controllers/Posts/view');
-    $this->Acl->allow($group, 'controllers/Widgets');
-
-    //allow users to only add and edit on posts and widgets
-    $group->id = 4;
-    $this->Acl->deny($group, 'controllers');
-    $this->Acl->allow($group, 'controllers/Posts/add');
-    $this->Acl->allow($group, 'controllers/Posts/edit');
-    $this->Acl->allow($group, 'controllers/Widgets/add');
-    $this->Acl->allow($group, 'controllers/Widgets/edit');
-    //we add an exit to avoid an ugly "missing views" error message
-    echo "all done";
-    exit;
-}
 }

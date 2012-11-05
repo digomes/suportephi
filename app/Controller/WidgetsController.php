@@ -97,8 +97,8 @@ class WidgetsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
         
-        public function beforeFilter() {
-    parent::beforeFilter();
-    $this->Auth->allow('index', 'view');
-}
+        /*public function beforeFilter() {
+             parent::beforeFilter();
+             $this->Auth->allow('index', 'view');
+        }*/
 }

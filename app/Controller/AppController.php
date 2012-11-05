@@ -46,14 +46,16 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         //Configure AuthComponent
-        $this->Auth->authorize = array(
+       /* $this->Auth->authorize = array(
             'Controller',
             'Actions' => array('actionPath' => 'controllers')
-        );
+        );*/
+        
         //$this->Auth->authenticate = array('Form' => array('fields' => array('username' => 'login', 'password' => 'password')));
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array('controller' => 'posts', 'action' => 'index');
+       
     }
     
     function isAuthorized($user) {

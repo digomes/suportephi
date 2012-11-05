@@ -64,6 +64,7 @@ class PostsController extends AppController {
 		if (!$this->Post->exists()) {
 			throw new NotFoundException(__('Invalid post'));
 		}
+                $this->request->data['Post']['user_id'] = $this->Auth->user('id');
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Post->save($this->request->data)) {
 				$this->Session->setFlash(__('The post has been saved'));
