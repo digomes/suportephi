@@ -33,15 +33,18 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-        public $components = array(
+       public $components = array(
         'Acl',
         'Auth' => array(
             'authorize' => array(
                 'Actions' => array('actionPath' => 'controllers')
             )
         ),
-        'Session'
+        'Session'         
     );
+        
+
+
     public $helpers = array('Html', 'Form', 'Session');
 
     public function beforeFilter() {

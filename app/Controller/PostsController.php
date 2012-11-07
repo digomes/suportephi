@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class PostsController extends AppController {
 
+    
+    public $helpers = array('Tinymce');
 /**
  * index method
  *
@@ -77,6 +79,8 @@ class PostsController extends AppController {
 		}
 		$users = $this->Post->User->find('list');
 		$this->set(compact('users'));
+                $categories = $this->Post->Category->find('list');
+		$this->set(compact('categories'));
 	}
 
 /**

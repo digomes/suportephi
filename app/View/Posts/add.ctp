@@ -4,9 +4,9 @@
 		<legend><?php echo __('Add Post'); ?></legend>
 	<?php
 		
-		echo $this->Form->input('title');
-		echo $this->Form->input('body');
-                echo $this->Form->input('category_id');
+		echo $this->Form->input('title', array('label' => 'Titulo'));
+		echo $this->Tinymce->input('Post.body', array('label' => 'Digite a informação abaixo'), array('laguage' => 'pt-Br'));
+                echo $this->Form->input('category_id', array('label' => 'Categoria'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
