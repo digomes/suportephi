@@ -40,12 +40,12 @@ class AppController extends Controller {
                 'Actions' => array('actionPath' => 'controllers')
             )
         ),
-        'Session'         
+        'Session'
     );
         
 
 
-    public $helpers = array('Html', 'Form', 'Session');
+    public $helpers = array('Html', 'Form', 'Session', 'Menu');
 
     public function beforeFilter() {
         //Configure AuthComponent
