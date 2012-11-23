@@ -1,56 +1,103 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Descrição do arquivo ImagesController
+ * Images Controller
  *
- * @descrição
- * @versão 
- * @autor diego
- * @data 22/11/2012
+ * @property Image $Image
  */
- 
-class ImagesController extends AppController { 
+class ImagesController extends AppController {
 
-    var $name = 'Images'; 
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function index() {
+		$this->Image->recursive = 0;
+		$this->set('images', $this->paginate());
+	}
 
-    var $uses = array('Image'); 
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		$this->Image->id = $id;
+		if (!$this->Image->exists()) {
+			throw new NotFoundException(__('Invalid image'));
+		}
+		$this->set('image', $this->Image->read(null, $id));
+	}
 
-    var $helpers = array( 
-        'Html', 
-        'Form', 
-        'Javascript', 
-        'Number' // Used to show readable filesizes 
-    ); 
+/**
+ * add method
+ *
+ * @return void
+ */
+	public function add() {
+		if ($this->request->is('post')) {
+			$this->Image->create();
+			if ($this->Image->save($this->request->data)) {
+				$this->Session->setFlash(__('The image has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The image could not be saved. Please, try again.'));
+			}
+		}
+		$posts = $this->Image->Post->find('list');
+		$this->set(compact('posts'));
+	}
 
-    function index() { 
-        $this->set( 
-            'images', 
-            $this->Image->readFolder(APP.WEBROOT_DIR.DS.'uploads') 
-        ); 
-    } 
+/**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function edit($id = null) {
+		$this->Image->id = $id;
+		if (!$this->Image->exists()) {
+			throw new NotFoundException(__('Invalid image'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->Image->save($this->request->data)) {
+				$this->Session->setFlash(__('The image has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The image could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->Image->read(null, $id);
+		}
+		$posts = $this->Image->Post->find('list');
+		$this->set(compact('posts'));
+	}
 
-    function upload() { 
-        // Upload an image 
-        if (!empty($this->data)) { 
-            // Validate and move the file 
-            if($this->Image->upload($this->data)) { 
-                $this->Session->setFlash('The image was successfully uploaded.'); 
-            } else { 
-                $this->Session->setFlash('There was an error with the uploaded file.'); 
-            } 
-             
-            $this->redirect( 
-                array( 
-                    'action' => 'index' 
-                ) 
-            ); 
-        } else { 
-            $this->redirect( 
-                array( 
-                    'action' => 'index' 
-                ) 
-            ); 
-        } 
-    } 
-} 
-?>
+/**
+ * delete method
+ *
+ * @throws MethodNotAllowedException
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
+		$this->Image->id = $id;
+		if (!$this->Image->exists()) {
+			throw new NotFoundException(__('Invalid image'));
+		}
+		if ($this->Image->delete()) {
+			$this->Session->setFlash(__('Image deleted'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('Image was not deleted'));
+		$this->redirect(array('action' => 'index'));
+	}
+}

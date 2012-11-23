@@ -34,6 +34,10 @@ $cakeDescription = __d('cake_dev', 'Suporte PHI - Philips Television');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+
+                echo $this->Html->script('ckeditor/ckeditor.js');
+                echo $this->Html->script('ckfinder/ckfinder.js');
+
 	?>
 </head>
 <body>

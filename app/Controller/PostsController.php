@@ -7,8 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class PostsController extends AppController {
 
-    
-    public $helpers = array('Tinymce');
 /**
  * index method
  *

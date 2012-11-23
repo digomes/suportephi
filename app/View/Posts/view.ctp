@@ -31,6 +31,11 @@
 			<?php echo h($post['Post']['modified']); ?>
 			&nbsp;
 		</dd>
+                <dt><?php echo __('Imagens'); ?></dt>
+		<dd>
+			<?php echo h($post['Image']['id']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
