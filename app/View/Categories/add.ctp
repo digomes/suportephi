@@ -4,6 +4,8 @@
 		<legend><?php echo __('Add Category'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
+                echo $this->Form->input('user_id');
+		echo $this->Form->input('Group.Group');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -13,5 +15,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Categories'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Posts'), array('controller' => 'posts', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

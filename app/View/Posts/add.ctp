@@ -6,7 +6,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Post'); ?></legend>
 	<?php
-		
+
 		echo $this->Form->input('title', array('label' => 'Titulo'));
 		echo $this->Form->input('body', array('id' => 'body', 'class' => 'ckeditor', 'label' => 'Digite a informação abaixo'));
                 echo $this->Form->input('category_id', array('label' => 'Categoria'));

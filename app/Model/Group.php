@@ -19,7 +19,7 @@ class Group extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Favor preencher esse campo',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -54,5 +54,15 @@ class Group extends AppModel {
         public function parentNode() {
             return null;
         }
+        
+        /**
+ * Display fields for this model
+ *
+ * @var array
+ */
+	protected $_displayFields = array(
+		'id',
+		'name',
+	);
 
 }

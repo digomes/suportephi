@@ -7,6 +7,14 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+    /**
+ * Controller name
+ *
+ * @var string
+ * @access public
+ */
+	public $name = 'Users';
+    
 /**
  * index method
  *

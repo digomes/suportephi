@@ -13,9 +13,29 @@ class CategoriesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Category->recursive = 0;
-		$this->set('categories', $this->paginate());
-	}
+		//$this->Category->recursive = 0;
+             $this->roleId = $this->Session->read('Auth.User.group_id');
+             
+             
+             if($this->roleId == '1'){
+                $this->Category->recursive = 0; 
+                $this->set('categories', $this->paginate());
+             }else{
+                 
+             $this->paginate = array(
+                'conditions' => array(
+                    'OR' => array('Category.visibility_groups' => '',
+                        'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%')
+                    ),
+                'limit' => 10
+             );
+                $categories = $this->paginate('Category');
+                $this->set(compact('categories'));
+		//$this->set('categories', $this->paginate());
+   
+            }
+        
+        }
 
 /**
  * view method
@@ -40,13 +60,18 @@ class CategoriesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Category->create();
+                        //$this->request->data['Category']['user_id'] = $this->Session->read('Auth.User.id');
+                        $this->request->data['Category']['visibility_groups'] = $this->Category->encodeData($this->request->data['Group']['Group']);
 			if ($this->Category->save($this->request->data)) {
 				$this->Session->setFlash(__('The category has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index'));   
 			} else {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.'));
 			}
 		}
+                $users = $this->Category->User->find('list');
+                $groups = $this->Category->User->Group->find('list');
+                $this->set(compact('groups', 'users'));
 	}
 
 /**
@@ -61,6 +86,8 @@ class CategoriesController extends AppController {
 		if (!$this->Category->exists()) {
 			throw new NotFoundException(__('Invalid category'));
 		}
+                //$this->request->data['Category']['user_id'] = $this->Session->read('Auth.User.id');
+                $this->request->data['Category']['visibility_groups'] = $this->Category->encodeData($this->request->data['Group']['Group']);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Category->save($this->request->data)) {
 				$this->Session->setFlash(__('The category has been saved'));
@@ -71,6 +98,8 @@ class CategoriesController extends AppController {
 		} else {
 			$this->request->data = $this->Category->read(null, $id);
 		}
+                $groups = $this->Category->User->Group->find('list');
+                $this->set(compact('groups'));
 	}
 
 /**
@@ -95,5 +124,54 @@ class CategoriesController extends AppController {
 		}
 		$this->Session->setFlash(__('Category was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+   
+        
+ /**
+ * Search
+ *
+ * @param string $typeAlias
+ * @return void
+ * @access public
+ */       
+        
+        
+        public function search() {
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Category']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Category']['q']);
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Category.name LIKE' => '%' . $q . '%',
+					),
+				),
+				array(
+					'OR' => array(
+						'Category.visibility_groups' => '',
+						'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%',
+					),
+				),
+			),
+
+             ));
+                $categories = $this->paginate('Category');
+                $this->set(compact('q','categories'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		//$this->set(compact('q', 'nodes'));
 	}
 }

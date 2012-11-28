@@ -8,7 +8,9 @@ App::uses('AuthComponent', 'Controller/Component');
  * @property Post $Post
  */
 class User extends AppModel {
+    
     public $name = 'User';
+    
     public $actsAs = array('Acl' => array('type' => 'requester'));
     
 /**
@@ -84,7 +86,21 @@ class User extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		),
+            
+                'Category' => array(
+                        'className' => 'Category',
+                        'foreignKey' => 'user_id',
+                        'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+                ),
 	);
         
         

@@ -20,7 +20,7 @@
   *        It's recommended to use constants instead.
   */
 
-session_name('CAKEPHP');
+ session_name('CAKEPHP');
 
 // PHP VERSION CHECK
 if (substr(PHP_VERSION, 0, strpos(PHP_VERSION, '.')) < 5)

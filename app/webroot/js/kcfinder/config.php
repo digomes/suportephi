@@ -83,7 +83,7 @@ $_CONFIG = array(
 
     'thumbsDir' => ".thumbs",
 
-    'jpegQuality' => 90,
+    'jpegQuality' => 100,
 
     'cookieDomain' => "",
     'cookiePath' => "",

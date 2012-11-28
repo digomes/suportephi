@@ -79,16 +79,7 @@ class Post extends AppModel {
 	public $hasMany = array(
 		'Image' => array(
 			'className' => 'Image',
-			'foreignKey' => 'post_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'foreignKey' => 'post_id'
 		)
 	);
 
