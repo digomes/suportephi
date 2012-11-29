@@ -69,9 +69,10 @@ class CategoriesController extends AppController {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.'));
 			}
 		}
+                $types = $this->Category->Type->find('list');
                 $users = $this->Category->User->find('list');
                 $groups = $this->Category->User->Group->find('list');
-                $this->set(compact('groups', 'users'));
+                $this->set(compact('groups', 'users', 'types'));
 	}
 
 /**
@@ -98,8 +99,10 @@ class CategoriesController extends AppController {
 		} else {
 			$this->request->data = $this->Category->read(null, $id);
 		}
+                $types = $this->Category->Type->find('list');
+                $users = $this->Category->User->find('list');
                 $groups = $this->Category->User->Group->find('list');
-                $this->set(compact('groups'));
+                $this->set(compact('groups', 'users', 'types'));
 	}
 
 /**
@@ -163,7 +166,9 @@ class CategoriesController extends AppController {
 				),
 			),
 
-             ));
+             ),
+                    'limit' => 10
+       );
                 $categories = $this->paginate('Category');
                 $this->set(compact('q','categories'));
 		//$this->set('categories', $this->paginate());

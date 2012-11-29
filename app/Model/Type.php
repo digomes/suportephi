@@ -1,15 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Group Model
+ * Type Model
  *
- * @property User $User
+ * @property Category $Category
  */
-class Group extends AppModel {
+class Type extends AppModel {
 
-    
-    public $actsAs = array('Acl' => array('type' => 'requester'));
-    
 /**
  * Validation rules
  *
@@ -19,7 +16,7 @@ class Group extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Favor preencher esse campo',
+				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -36,9 +33,9 @@ class Group extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'group_id',
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'type_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -50,10 +47,5 @@ class Group extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-        
-        public function parentNode() {
-            return null;
-        }
-        
 
 }

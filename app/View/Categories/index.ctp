@@ -1,22 +1,12 @@
-<div class="categories index">
+<div class="categories index"> 
+	</fieldset>
+
+
         <?php 
             if(count($categories) == '0'){
-                echo 'Nenhuma categoria disponível para visualizar';
+                echo '<pre class="cake-error">Nenhuma categoria disponível para visualizar</pre>';
             }
         ?>
-    
-	<h2><?php echo __('Categories'); ?></h2>
-        
-        <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
-	<fieldset>
-		<legend><?php echo __('Busca Categoria'); ?></legend>
-	<?php
-		echo $this->Form->input('q');
-	?>
-	</fieldset>
-        <?php echo $this->Form->end(__('Buscar')); ?>
-        </div>
-
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -36,6 +26,7 @@
 		<td><?php echo h($category['Category']['visibility_groups']); ?>&nbsp;</td>
 		<td><?php echo h($category['Category']['created']); ?>&nbsp;</td>
 		<td><?php echo h($category['Category']['modified']); ?>&nbsp;</td>
+                
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $category['Category']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['id'])); ?>

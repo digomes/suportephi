@@ -4,9 +4,10 @@
 		<legend><?php echo __('Edit Category'); ?></legend>
 	<?php
 		echo $this->Form->input('id', array('type' => 'hidden'));
-		echo $this->Form->input('name');
-		//echo $this->Form->input('user_id');
-		echo $this->Form->input('Group.Group');
+		echo $this->Form->input('name', array('label' => 'Nome Da Categoria'));
+		echo $this->Form->input('user_id', array('label' => 'Quem Vai Receber Email'));
+                echo $this->Form->input('type_id', array('label' => 'Selecione o tipo da categoria'));
+		echo $this->Form->input('Group.Group', array('label' => 'Selecione Os Grupos que podem Visualizar essa Categoria'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

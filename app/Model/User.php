@@ -9,8 +9,13 @@ App::uses('AuthComponent', 'Controller/Component');
  */
 class User extends AppModel {
     
+    //Nome do campo que será exibido
+    public $displayField = 'username';
+    
+    //nome do Model
     public $name = 'User';
     
+    //Behaviors Utilizados
     public $actsAs = array('Acl' => array('type' => 'requester'));
     
 /**

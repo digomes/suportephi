@@ -1,12 +1,10 @@
 <div class="categories index">
         <?php 
             if(count($categories) == '0'){
-                echo 'Nenhuma categoria disponível para visualizar';
+                echo '<pre class="cake-error">Nenhuma categoria disponível para visualizar</pre>';
             }
         ?>
     
-	<h2><?php echo __('Categories'); ?></h2>
-        
         <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
 	<fieldset>
 		<legend><?php echo __('Busca Categoria'); ?></legend>
@@ -49,7 +47,8 @@
 	echo $this->Paginator->counter(array(
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	));
-	?>	</p>
+	?>
+        </p>
 
 	<div class="paging">
 	<?php

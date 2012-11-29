@@ -73,6 +73,14 @@ class Category extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+            
+                'Type' => array(
+			'className' => 'Type',
+			'foreignKey' => 'type_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
