@@ -24,8 +24,10 @@ class CategoriesController extends AppController {
                  
              $this->paginate = array(
                 'conditions' => array(
-                    'OR' => array('Category.visibility_groups' => '',
-                        'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%')
+                    'OR' => array(
+                        'Category.visibility_groups' => '',
+                        'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%'
+                        )
                     ),
                 'limit' => 10
              );
@@ -46,11 +48,47 @@ class CategoriesController extends AppController {
  */
 	public function view($id = null) {
 		$this->Category->id = $id;
-		if (!$this->Category->exists()) {
-			throw new NotFoundException(__('Invalid category'));
-		}
-		$this->set('category', $this->Category->read(null, $id));
+                $this->roleId = $this->Session->read('Auth.User.group_id');
+                
+                if($this->roleId == '1'){
+                    $this->set('category', $this->Category->read(null, $id));
+                }else{
+                
+                $category = $this->Category->find('first', array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Category.id =' => $this->Category->id  ,
+					),
+				),
+				array(
+					'OR' => array(
+						'Category.visibility_groups' => '',
+						'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%',
+					),
+				),
+			),
+
+             )
+                ));
+                
+                
+                if($category == null){
+                        $this->Session->setFlash(__('Você não tem acesso ao conteudo que tentou acessar'));
+			$this->redirect('/categories');
+                    
+                
+                }else{
+                       $this->set(compact('category'));
+                }
+                
+                
+                
+		//$this->set('category', $this->Category->read(null, $id));
 	}
+        
+        }
 
 /**
  * add method
@@ -133,7 +171,7 @@ class CategoriesController extends AppController {
  /**
  * Search
  *
- * @param string $typeAlias
+ * @param 
  * @return void
  * @access public
  */       

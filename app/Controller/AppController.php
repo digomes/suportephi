@@ -40,7 +40,8 @@ class AppController extends Controller {
                 'Actions' => array('actionPath' => 'controllers')
             )
         ),
-        'Session'
+        'Session',
+        'Email'   
     );
         
 
@@ -48,7 +49,8 @@ class AppController extends Controller {
     public $helpers = array('Html', 'Form', 'Session');
 
     public function beforeFilter() {
-        //$this->Auth->allow('display');
+        $this->Auth->allow(array('forgetpwd', 'reset'));
+        //$this->Auth->allow('reset');
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array('controller' => 'posts', 'action' => 'index');

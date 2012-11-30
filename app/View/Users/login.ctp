@@ -16,3 +16,4 @@ echo $this->Form->inputs(array(
 ));
 echo $this->Form->end('Login');
 ?>
+<?php echo $this->Html->link("Forget Password ?",array("controller"=>"users","action"=>"forgetpwd")); ?>

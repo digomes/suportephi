@@ -13,9 +13,29 @@ class PostsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Post->recursive = 0;
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+
+             if($this->roleId == '1'){
+                $this->Post->recursive = 0;
 		$this->set('posts', $this->paginate());
+             }else{
+                 
+
+            $this->paginate = array(
+                'conditions' => array(
+                    'OR' => array(
+                        'Category.visibility_groups' => '',
+                        'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%'
+                        )
+                    ),
+                'limit' => 10
+             );
+                $posts = $this->paginate('Post');
+                $this->set(compact('posts'));
 	}
+        
+        }
 
 /**
  * view method
@@ -26,12 +46,43 @@ class PostsController extends AppController {
  */
 	public function view($id = null) {
 		$this->Post->id = $id;
-		if (!$this->Post->exists()) {
-			throw new NotFoundException(__('Invalid post'));
-		}
-		$this->set('post', $this->Post->read(null, $id));
-	}
+                $this->roleId = $this->Session->read('Auth.User.group_id');
+		//$this->set('post', $this->Post->find('first', $id));
+                
+                if($this->roleId == '1'){
+                    $this->set('post', $this->Post->read(null, $id));
+                }else{
+                   $post = $this->Post->find('first', array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Post.id =' => $this->Post->id  ,
+					),
+				),
+				array(
+					'OR' => array(
+						'Category.visibility_groups' => '',
+						'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%',
+					),
+				),
+			),
 
+             )
+                ));
+                   
+               if($post == null){
+                        $this->Session->setFlash(__('Você não tem acesso ao conteudo que tentou acessar'));
+			$this->redirect('/posts');
+                    
+                
+                }else{
+                       $this->set(compact('post'));
+                }
+                
+	}
+        
+        }
 /**
  * add method
  *
