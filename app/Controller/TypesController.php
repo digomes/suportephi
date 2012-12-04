@@ -12,7 +12,7 @@ class TypesController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Type->recursive = 0;
 		$this->set('types', $this->paginate());
 	}
@@ -24,7 +24,7 @@ class TypesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$this->Type->id = $id;
 		if (!$this->Type->exists()) {
 			throw new NotFoundException(__('Invalid type'));
@@ -37,7 +37,7 @@ class TypesController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Type->create();
 			if ($this->Type->save($this->request->data)) {
@@ -56,7 +56,7 @@ class TypesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Type->id = $id;
 		if (!$this->Type->exists()) {
 			throw new NotFoundException(__('Invalid type'));
@@ -81,7 +81,7 @@ class TypesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

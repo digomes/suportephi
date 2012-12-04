@@ -31,13 +31,38 @@ class ImagesController extends AppController {
 		}
 		$this->set('image', $this->Image->read(null, $id));
 	}
+        
+        /**
+ * index method
+ *
+ * @return void
+ */
+	public function admin_index() {
+		$this->Image->recursive = 0;
+		$this->set('images', $this->paginate());
+	}
+        
+        /**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		$this->Image->id = $id;
+		if (!$this->Image->exists()) {
+			throw new NotFoundException(__('Invalid image'));
+		}
+		$this->set('image', $this->Image->read(null, $id));
+	}
 
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Image->create();
 			if ($this->Image->save($this->request->data)) {
@@ -58,7 +83,7 @@ class ImagesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Image->id = $id;
 		if (!$this->Image->exists()) {
 			throw new NotFoundException(__('Invalid image'));
@@ -85,7 +110,7 @@ class ImagesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

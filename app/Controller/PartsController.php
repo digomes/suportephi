@@ -31,13 +31,39 @@ class PartsController extends AppController {
 		}
 		$this->set('part', $this->Part->read(null, $id));
 	}
+        
+        /**
+ * index method
+ *
+ * @return void
+ */
+	public function admin_index() {
+		$this->Part->recursive = 0;
+		$this->set('parts', $this->paginate());
+	}
+        
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		$this->Part->id = $id;
+		if (!$this->Part->exists()) {
+			throw new NotFoundException(__('Invalid part'));
+		}
+		$this->set('part', $this->Part->read(null, $id));
+	}
 
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
             
         $modelClass = 'Part';
             if ( $this->request->is('post') ) {
@@ -76,7 +102,7 @@ class PartsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Part->id = $id;
 		if (!$this->Part->exists()) {
 			throw new NotFoundException(__('Invalid part'));
@@ -103,7 +129,7 @@ class PartsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

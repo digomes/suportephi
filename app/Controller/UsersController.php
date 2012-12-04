@@ -20,7 +20,7 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
@@ -39,13 +39,47 @@ class UsersController extends AppController {
 		}
 		$this->set('user', $this->User->read(null, $id));
 	}
+        
+        /**
+ * add method
+ *
+ * @return void
+ */
+	public function add() {
+		if ($this->request->is('post')) {
+			$this->User->create();
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('The user has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		}
+		$groups = $this->User->Group->find('list');
+		$this->set(compact('groups'));
+	}
+        
+        /**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		$this->set('user', $this->User->read(null, $id));
+	}
 
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
@@ -84,6 +118,32 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
+        
+        /**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_edit($id = null) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('The user has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->User->read(null, $id);
+		}
+		$groups = $this->User->Group->find('list');
+		$this->set(compact('groups'));
+	}
 
 /**
  * delete method
@@ -93,7 +153,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
@@ -120,8 +180,23 @@ class UsersController extends AppController {
                 }
             }
         }
+        
+       public function admin_login() {
+            if ($this->request->is('post')) {
+                if ($this->Auth->login()) {
+                $this->redirect($this->Auth->redirect());
+            } else {
+                $this->Session->setFlash('Your username or password was incorrect.');
+                }
+            }
+        }
 
         public function logout() {
+            $this->Session->setFlash('Obrigado por ter usado o nosso site !');
+            $this->redirect($this->Auth->logout());
+        }
+        
+       public function admin_logout() {
             $this->Session->setFlash('Obrigado por ter usado o nosso site !');
             $this->redirect($this->Auth->logout());
         }

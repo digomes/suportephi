@@ -36,8 +36,8 @@ class PostsController extends AppController {
 	}
         
         }
-
-/**
+        
+        /**
  * view method
  *
  * @throws NotFoundException
@@ -83,12 +83,43 @@ class PostsController extends AppController {
 	}
         
         }
+        
+
+        
+        public function admin_index() {
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+
+                $this->Post->recursive = 0;
+		$this->set('posts', $this->paginate());
+
+        
+        }
+        
+                        /**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		$this->Post->id = $id;
+                $this->roleId = $this->Session->read('Auth.User.group_id');
+		//$this->set('post', $this->Post->find('first', $id));
+                
+                    $this->set('post', $this->Post->read(null, $id));
+                
+        
+        }
+
+
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Post->create();
                         $this->request->data['Post']['user_id'] = $this->Auth->user('id');
@@ -110,7 +141,7 @@ class PostsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Post->id = $id;
 		if (!$this->Post->exists()) {
 			throw new NotFoundException(__('Invalid post'));
@@ -140,7 +171,7 @@ class PostsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

@@ -89,13 +89,39 @@ class CategoriesController extends AppController {
 	}
         
         }
+        
+        /**
+ * index method
+ *
+ * @return void
+ */
+	public function admin_index() {
+
+                $this->Category->recursive = 0; 
+                $this->set('categories', $this->paginate());
+             
+        }
+        
+        /**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		$this->Category->id = $id;
+                $this->set('category', $this->Category->read(null, $id));
+                
+        
+        }
 
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Category->create();
                         //$this->request->data['Category']['user_id'] = $this->Session->read('Auth.User.id');
@@ -120,7 +146,7 @@ class CategoriesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Category->id = $id;
 		if (!$this->Category->exists()) {
 			throw new NotFoundException(__('Invalid category'));
@@ -151,7 +177,7 @@ class CategoriesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

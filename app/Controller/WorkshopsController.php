@@ -12,7 +12,7 @@ class WorkshopsController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Workshop->recursive = 0;
 		$this->set('workshops', $this->paginate());
 	}
@@ -24,7 +24,15 @@ class WorkshopsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
+		$this->Workshop->id = $id;
+		if (!$this->Workshop->exists()) {
+			throw new NotFoundException(__('Invalid workshop'));
+		}
+		$this->set('workshop', $this->Workshop->read(null, $id));
+	}
+        
+        public function view($id = null) {
 		$this->Workshop->id = $id;
 		if (!$this->Workshop->exists()) {
 			throw new NotFoundException(__('Invalid workshop'));
@@ -37,7 +45,7 @@ class WorkshopsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Workshop->create();
 			if ($this->Workshop->save($this->request->data)) {
@@ -50,6 +58,30 @@ class WorkshopsController extends AppController {
 	}
 
 /**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_edit($id = null) {
+		$this->Workshop->id = $id;
+		if (!$this->Workshop->exists()) {
+			throw new NotFoundException(__('Invalid workshop'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->Workshop->save($this->request->data)) {
+				$this->Session->setFlash(__('The workshop has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The workshop could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->Workshop->read(null, $id);
+		}
+	}
+        
+        /**
  * edit method
  *
  * @throws NotFoundException
@@ -81,7 +113,7 @@ class WorkshopsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

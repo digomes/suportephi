@@ -31,13 +31,38 @@ class GroupsController extends AppController {
 		}
 		$this->set('group', $this->Group->read(null, $id));
 	}
+        
+        /**
+ * index method
+ *
+ * @return void
+ */
+	public function admin_index() {
+		$this->Group->recursive = 0;
+		$this->set('groups', $this->paginate());
+	}
+        
+        /**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		$this->Group->id = $id;
+		if (!$this->Group->exists()) {
+			throw new NotFoundException(__('Invalid group'));
+		}
+		$this->set('group', $this->Group->read(null, $id));
+	}
 
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Group->create();
 			if ($this->Group->save($this->request->data)) {
@@ -56,7 +81,7 @@ class GroupsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Group->id = $id;
 		if (!$this->Group->exists()) {
 			throw new NotFoundException(__('Invalid group'));
@@ -81,7 +106,7 @@ class GroupsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
