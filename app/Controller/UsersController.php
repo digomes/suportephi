@@ -166,10 +166,10 @@ class UsersController extends AppController {
                                 'password'=>'di210190'
                                   );
                               $this->Email->template = 'resetpw';
-                            $this->Email->from    = 'Recuperar Senha <diego@diegogomes.net>';
-                            $this->Email->to      = $fu['User']['name'].'<'.$fu['User']['email'].'>';
-                            $this->Email->subject = 'Reset Your Password';
-                            $this->Email->sendAs = 'both';
+                              $this->Email->from    = 'Recuperar Senha <diego@diegogomes.net>';
+                              $this->Email->to      = $fu['User']['name'].'<'.$fu['User']['email'].'>';
+                              $this->Email->subject = 'Reset Your Password';
+                              $this->Email->sendAs = 'both';
  
                                 $this->Email->delivery = 'smtp';
                                 $this->set('ms', $ms);
@@ -220,7 +220,7 @@ class UsersController extends AppController {
             }
             else
             {
-                $this->Session->setFlash('Token Corrupted,,Please Retry.the reset link work only for once.');
+                $this->Session->setFlash('Token Corrupted,Please Retry.the reset link work only for once.');
             }
         }
  
