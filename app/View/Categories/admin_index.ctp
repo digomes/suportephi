@@ -1,60 +1,57 @@
-<div class="categories index"> 
+        <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
+	<fieldset>
+
+	<?php
+		echo $this->Form->input('q', array('label' => 'Digite o modelo para realizar a busca'));
+	?>
 	</fieldset>
+        <?php echo $this->Form->end(__('Buscar')); ?>
+<br />
 
+<div class="nodes search">
 
-        <?php 
+	<?php
+        //start if
             if(count($categories) == '0'){
-                echo '<pre class="cake-error">Nenhuma categoria disponível para visualizar</pre>';
-            }
-        ?>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('visibility_groups'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
+                echo '<div id="flashMessage" class="message">Nenhuma categoria disponível para visualizar</div>';
+            }else{
+
+
+	?>
+
 	<?php
-	foreach ($categories as $category): ?>
-	<tr>
-		<td><?php echo h($category['Category']['id']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['name']); ?>&nbsp;</td>
-		<td><?php echo h($category['User']['username']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['visibility_groups']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['created']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['modified']); ?>&nbsp;</td>
-                
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $category['Category']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['id']), null, __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
+		foreach ($categories as $category) {
+			
+	?>
+	<div id="node-1" class="node node-type-blog">
+		<h2><?php echo $this->Html->link($category['Category']['name'], array('action' => 'view', $category['Category']['id'])); ?></h2>
+                <div class="node-info">
+                    <span class="author">
+                       
+                    </span>
+                    <span class="date">
+                        Postado em : <?php echo $category['Category']['created']; ?>
+                    </span>
+                    <div class="node-more-info">
+                        <?php 
+                            if ($category['Category']['created'] != $category['Category']['modified']){
+                            echo '  Modificado em: '. $category['Category']['modified'];  
+                            }
+                        ?>  
+                    </div>
+                </div>
+	</div>
 	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
+		}
+	?>
 
 	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+            	<?php
+
+		echo $this->Paginator->prev('<< ' . __('Previous '), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => ' | '));
+		echo $this->Paginator->next(__(' Next') . ' >>', array(), null, array('class' => 'next disabled'));
 	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Category'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Posts'), array('controller' => 'posts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
-	</ul>
+        </div>
+        <?php } ?>
 </div>

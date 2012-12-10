@@ -8,7 +8,6 @@
         <?php echo $this->Form->end(__('Buscar')); ?>
 <br />
 
-
 <div class="nodes search">
 
 	<?php
@@ -40,6 +39,15 @@
                             }
                         ?>  
                     </div>
+                <div class="actions">
+                    <ul>
+                        <li><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['id'])); ?></li>
+                        <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['id']), null, __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?></li>
+                    </ul>
+			
+			
+			
+		</div>
                 </div>
 	</div>
 	<?php

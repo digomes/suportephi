@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class PostsController extends AppController {
 
+    public $paginate = array('limit' => 5);
+    
 /**
  * index method
  *
@@ -26,10 +28,11 @@ class PostsController extends AppController {
                 'conditions' => array(
                     'OR' => array(
                         'Category.visibility_groups' => '',
-                        'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%'
+                        'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%',
+                        //'Category.id =' => $this->Post->Category->id,
                         )
                     ),
-                'limit' => 10
+               'limit' => 4
              );
                 $posts = $this->paginate('Post');
                 $this->set(compact('posts'));
@@ -87,13 +90,12 @@ class PostsController extends AppController {
 
         
         public function admin_index() {
-            
-            $this->roleId = $this->Session->read('Auth.User.group_id');
+           $this->Post->recursive = 0;
+           
+                $posts = $this->paginate('Post');
+                $this->set(compact('posts'));
 
-                $this->Post->recursive = 0;
-		$this->set('posts', $this->paginate());
 
-        
         }
         
                         /**

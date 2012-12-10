@@ -5,6 +5,8 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('filename'); ?></th>
 			<th><?php echo $this->Paginator->sort('dir'); ?></th>
+			<th><?php echo $this->Paginator->sort('mimetype'); ?></th>
+			<th><?php echo $this->Paginator->sort('filesize'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th><?php echo $this->Paginator->sort('post_id'); ?></th>
@@ -17,6 +19,8 @@
 		<td><?php echo h($image['Image']['id']); ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['filename']); ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['dir']); ?>&nbsp;</td>
+		<td><?php echo h($image['Image']['mimetype']); ?>&nbsp;</td>
+		<td><?php echo h($image['Image']['filesize']); ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['created']); ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['modified']); ?>&nbsp;</td>
 		<td>
@@ -45,4 +49,8 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
+</div>
+<div class="actions">
+	<h3><?php echo __('Menu'); ?></h3>
+        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
 </div>

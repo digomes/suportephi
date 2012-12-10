@@ -6,7 +6,10 @@ App::uses('AppController', 'Controller');
  * @property Category $Category
  */
 class CategoriesController extends AppController {
-
+    
+    public $paginate = array(
+        'limit' => 5
+    );
 /**
  * index method
  *
@@ -29,7 +32,7 @@ class CategoriesController extends AppController {
                         'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%'
                         )
                     ),
-                'limit' => 10
+                'limit' => 5
              );
                 $categories = $this->paginate('Category');
                 $this->set(compact('categories'));
@@ -73,14 +76,23 @@ class CategoriesController extends AppController {
              )
                 ));
                 
+             $options = array(
+                 'conditions' => array('Post.category_id' => $this->Category->id),
+                 'order' => array('Post.created' => 'DESC'),
+                 'limit' => 4
+             );
+             
+             $this->paginate = $options;
                 
                 if($category == null){
-                        $this->Session->setFlash(__('Você não tem acesso ao conteudo que tentou acessar'));
+                        $this->Session->setFlash(__('Você não tem permissão para visualizar o conteudo que tentou acessar'));
 			$this->redirect('/categories');
                     
                 
                 }else{
-                       $this->set(compact('category'));
+                      
+             $posts = $this->paginate('Post');
+             $this->set(compact('category', 'posts', $posts));
                 }
                 
                 
@@ -110,11 +122,34 @@ class CategoriesController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		$this->Category->id = $id;
-                $this->set('category', $this->Category->read(null, $id));
+            
+             $this->Category->id = $id;
+                             $category = $this->Category->find('first', array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Category.id =' => $this->Category->id  ,
+					),
+				),
+			),
+
+             )
+             ));
+             
+             $options = array(
+                 'conditions' => array('Post.category_id' => $this->Category->id),
+                 'order' => array('Post.created' => 'DESC'),
+                 'limit' => 4
+             );
+             $this->paginate = $options;
+             
+             $posts = $this->paginate('Post');
+             $this->set(compact('category', 'posts', $posts));
+    }
                 
         
-        }
+        
 
 /**
  * add method
@@ -226,6 +261,41 @@ class CategoriesController extends AppController {
 					'OR' => array(
 						'Category.visibility_groups' => '',
 						'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%',
+					),
+				),
+			),
+
+             ),
+                    'limit' => 10
+       );
+                $categories = $this->paginate('Category');
+                $this->set(compact('q','categories'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		//$this->set(compact('q', 'nodes'));
+	}
+        
+           public function admin_search() {
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Category']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Category']['q']);
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Category.name LIKE' => '%' . $q . '%',
 					),
 				),
 			),

@@ -46,11 +46,12 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
+            $this->UserId = $this->Session->read('Auth.User.id');
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'view', $this->UserId));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}

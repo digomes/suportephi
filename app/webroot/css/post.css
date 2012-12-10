@@ -1,0 +1,24 @@
+/* 
+    Document   : post
+    Created on : 06/12/2012, 16:58:05
+    Author     : diego
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+
+.nodes .node h2 { font-size: 26px; }
+
+.node { margin: 0px 0px 50px 0px; }
+.node h2 a { text-decoration: none; display: block; }
+.node h3 { margin: 15px 0px 10px 0px; }
+.node .node-info,
+.node .node-more-info { font-size: 13px; color: #666; font-style: italic; display: block; }
+.node .node-info a,
+.node .node-more-info a { font-style: normal; }
+.node .node-body { margin: 20px 0px 15px 0px; }
+.node .node-body ul,
+.node .node-body ol { margin: 10px; }
+.node .node-body ul li { list-style-type: disc; margin: 0px 0px 0px 25px; }
+.node .node-body ol li { list-style-type: decimal; margin: 0px 0px 0px 25px; }

@@ -6,31 +6,6 @@ App::uses('AppController', 'Controller');
  * @property Group $Group
  */
 class GroupsController extends AppController {
-
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Group->recursive = 0;
-		$this->set('groups', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Group->id = $id;
-		if (!$this->Group->exists()) {
-			throw new NotFoundException(__('Invalid group'));
-		}
-		$this->set('group', $this->Group->read(null, $id));
-	}
         
         /**
  * index method

@@ -29,7 +29,12 @@ $cakeDescription = __d('cake_dev', 'Suporte PHI - Philips Television');
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('cake.generic');
+                echo $this->Html->css('reset');
+                echo $this->Html->css('admin');
+                echo $this->Html->css('tickbox');
+                echo $this->Html->css('960');
+                echo $this->Html->css('post');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -41,17 +46,31 @@ $cakeDescription = __d('cake_dev', 'Suporte PHI - Philips Television');
 	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
-
+<div id="wrapper">
+    <div id="header">
+	<?php echo $this->Html->Image('/img/logo.png', array('alt' => '', 'title' => '', 'width' => '140px', 'height' => '80px;')) ?>		
+    </div>
+        <div id="nav-container">
+        <div class="container_16">
+            <div id="nav">
+                <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'sf-menu sf-js-enabled')); ?>
+            </div>    
+        </div>
+    </div>
+        <div id="main" class="container_16">
+            <div class="grid_16">
+                <div id="content">
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
+                </div>
+            </div>
+            <div class="clear">&#32;</div>
+        </div>      
+
+ <div class="push"></div> 
+</div>
+    		<div id="footer">
 			<?php echo $this->Html->link(
 					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
 					'http://www.cakephp.org/',
@@ -59,7 +78,6 @@ $cakeDescription = __d('cake_dev', 'Suporte PHI - Philips Television');
 				);
 			?>
 		</div>
-	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

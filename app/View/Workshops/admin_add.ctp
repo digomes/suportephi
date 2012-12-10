@@ -32,9 +32,6 @@
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Workshops'), array('action' => 'index')); ?></li>
-	</ul>
+	<h3><?php echo __('Menu'); ?></h3>
+        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
 </div>

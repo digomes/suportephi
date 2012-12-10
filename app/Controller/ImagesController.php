@@ -7,15 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class ImagesController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Image->recursive = 0;
-		$this->set('images', $this->paginate());
-	}
 
 /**
  * view method

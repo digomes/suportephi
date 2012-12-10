@@ -1,88 +1,64 @@
-<div class="categories view">
-<h2><?php  echo __('Category'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($category['Category']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($category['Category']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($category['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Visibilitiy Groups'); ?></dt>
-		<dd>
-			<?php echo h($category['Category']['visibility_groups']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($category['Category']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($category['Category']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Category'), array('action' => 'edit', $category['Category']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Category'), array('action' => 'delete', $category['Category']['id']), null, __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categories'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Posts'), array('controller' => 'posts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Posts'); ?></h3>
-	<?php if (!empty($category['Post'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Title'); ?></th>
-		<th><?php echo __('Body'); ?></th>
-		<th><?php echo __('Category Id'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($category['Post'] as $post): ?>
-		<tr>
-			<td><?php echo $post['id']; ?></td>
-			<td><?php echo $post['user_id']; ?></td>
-			<td><?php echo $post['title']; ?></td>
-			<td><?php echo $post['body']; ?></td>
-			<td><?php echo $post['category_id']; ?></td>
-			<td><?php echo $post['created']; ?></td>
-			<td><?php echo $post['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'posts', 'action' => 'view', $post['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'posts', 'action' => 'edit', $post['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'posts', 'action' => 'delete', $post['id']), null, __('Are you sure you want to delete # %s?', $post['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<div class="node">
+<h2><?php echo $category['Category']['name']; ?></h2>
+<div class="node-info">
+    
+    Criado em: <span class="date"><?php echo h($category['Category']['created']); ?></span>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
-		</ul>
+</div>
+
+<div class="node-more-info">  
+<?php 
+if ($category['Category']['created'] != $category['Category']['modified']){
+  echo '  Modificado em: '. $category['Category']['modified'];  
+}
+?>   
+</div>
+</div>
+<div class="nodes search">
+<br />
+<h3><?php echo __('Informações do Produto'); ?></h3>
+
+            <?php if (!empty($category['Post'])): ?>
+
+	<?php
+		//$i = 0;
+		foreach ($posts as $post):
+			
+	?>
+	<div id="node-1" class="node node-type-blog">
+		<h2><?php echo $this->Html->link($post['Post']['title'], array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?></h2>
+                <div class="node-info">
+                    <!--<span class="author">
+                        Autor: 
+                    </span>-->
+                    <span class="date">
+                        Postado em : <?php echo $post['Post']['created']; ?>
+                    </span>
+                    <div class="node-more-info">
+                        <?php 
+                            if ($post['Post']['created'] != $post['Post']['modified']){
+                            echo '  Modificado em: '. $post['Post']['modified'];  
+                            }
+                        ?>  
+                    </div>
+
+                </div>
 	</div>
-        
+    
+	<?php endforeach; ?>
+        <p>
+        <?php
+	//echo $this->Paginator->counter(array(
+	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	//));
+	?>	</p>
+	<div class="paging">
+            	<?php
+		echo $this->Paginator->prev('<< ' . __('Previous  '), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => ' | '));
+		echo $this->Paginator->next(__('  Next') . ' >>', array(), null, array('class' => 'next disabled'));
+	?>
+        </div>
+        <?php endif; ?>
+
 </div>
