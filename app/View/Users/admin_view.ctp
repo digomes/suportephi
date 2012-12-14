@@ -33,33 +33,20 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Menu'); ?></h3>
-        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
-</div>
+
 <div class="related">
 	<h3><?php echo __('Related Posts'); ?></h3>
 	<?php if (!empty($user['Post'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Title'); ?></th>
-		<th><?php echo __('Body'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($user['Post'] as $post): ?>
 		<tr>
-			<td><?php echo $post['id']; ?></td>
-			<td><?php echo $post['user_id']; ?></td>
-			<td><?php echo $post['title']; ?></td>
-			<td><?php echo $post['body']; ?></td>
-			<td><?php echo $post['created']; ?></td>
-			<td><?php echo $post['modified']; ?></td>
+			<td><?php echo $this->Html->link(__($post['title']), array('controller' => 'posts', 'action' => 'view', $post['id'])); ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'posts', 'action' => 'view', $post['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'posts', 'action' => 'edit', $post['id'])); ?>
@@ -70,9 +57,5 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
+
 </div>

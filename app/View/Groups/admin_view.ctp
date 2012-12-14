@@ -1,23 +1,26 @@
-<div class="groups view">
-<h2><?php  echo __('Group'); ?></h2>
-	<dl>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($group['Group']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($group['Group']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($group['Group']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+    <div class="actions">
+        <ul>
+            <li><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $group['Group']['id'])); ?></li>
+            <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $group['Group']['id']), null, __('Are you sure you want to delete # %s?', $group['Group']['id'])); ?></li>
+        </ul>
+    </div>
+
+<div class="node">
+<h2><?php  echo $group['Group']['name']; ?></h2>
+<div class="node-info">
+    Criado em: <span class="date"><?php echo h($group['Group']['created']); ?></span>
+
 </div>
+
+<div class="node-more-info">  
+<?php 
+if ($group['Group']['created'] != $group['Group']['modified']){
+  echo '  Modificado em: '. $group['Group']['modified'];  
+}
+?>   
+</div>
+</div>
+
 <div class="related">
 	<h3><?php echo __('Related Users'); ?></h3>
 	<?php if (!empty($group['User'])): ?>

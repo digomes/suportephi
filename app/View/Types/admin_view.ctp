@@ -23,10 +23,6 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Menu'); ?></h3>
-        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
-</div>
 
 <div class="related">
 	<h3><?php echo __('Related Categories'); ?></h3>
@@ -35,8 +31,6 @@
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Type Id'); ?></th>
 		<th><?php echo __('Visibility Groups'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
@@ -48,8 +42,6 @@
 		<tr>
 			<td><?php echo $category['id']; ?></td>
 			<td><?php echo $category['name']; ?></td>
-			<td><?php echo $category['user_id']; ?></td>
-			<td><?php echo $category['type_id']; ?></td>
 			<td><?php echo $category['visibility_groups']; ?></td>
 			<td><?php echo $category['created']; ?></td>
 			<td><?php echo $category['modified']; ?></td>
@@ -63,9 +55,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
 </div>

@@ -38,8 +38,4 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Menu'); ?></h3>
-        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
-</div>
 

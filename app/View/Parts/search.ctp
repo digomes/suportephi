@@ -17,7 +17,6 @@
 			<th><?php echo $this->Paginator->sort('seguranca'); ?></th>
 			<th><?php echo $this->Paginator->sort('codigo'); ?></th>
 			<th><?php echo $this->Paginator->sort('nome'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 	foreach ($parts as $part): ?>
@@ -47,11 +46,6 @@
                 ?>
                 </td>
 		<td><?php echo h($part['Part']['nome']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $part['Part']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $part['Part']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $part['Part']['id']), null, __('Are you sure you want to delete # %s?', $part['Part']['id'])); ?>
-		</td>
 	</tr>
 <?php endforeach; ?>
 	</table>

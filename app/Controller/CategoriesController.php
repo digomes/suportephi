@@ -138,14 +138,24 @@ class CategoriesController extends AppController {
              ));
              
              $options = array(
-                 'conditions' => array('Post.category_id' => $this->Category->id),
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Category.id =' => $this->Category->id  ,
+					),
+				),
+			),
+
+             ),
                  'order' => array('Post.created' => 'DESC'),
                  'limit' => 4
              );
              $this->paginate = $options;
              
              $posts = $this->paginate('Post');
-             $this->set(compact('category', 'posts', $posts));
+             //$parts = $this->paginate('Part');
+             $this->set(compact('category', 'posts'));
     }
                 
         

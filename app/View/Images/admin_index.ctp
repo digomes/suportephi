@@ -1,28 +1,20 @@
-<div class="images index">
+<div class="attachments index">
 	<h2><?php echo __('Images'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
-	<tr>
+	<tr class="striped">
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('filename'); ?></th>
-			<th><?php echo $this->Paginator->sort('dir'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('post_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('descricao'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 	foreach ($images as $image): ?>
 	<tr>
 		<td><?php echo h($image['Image']['id']); ?>&nbsp;</td>
-		<td><?php echo h($image['Image']['filename']); ?>&nbsp;</td>
-		<td><?php echo h($image['Image']['dir']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->Image('/files/image/filename/'.$image['Image']['dir'].'/'.$image['Image']['filename'], array('alt' => $image['Image']['descricao'], 'title' => $image['Image']['descricao'], 'width' => '150px')) ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['created']); ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['modified']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($image['Post']['title'], array('controller' => 'posts', 'action' => 'view', $image['Post']['id'])); ?>
-		</td>
-		<td><?php echo h($image['Image']['descricao']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $image['Image']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $image['Image']['id'])); ?>

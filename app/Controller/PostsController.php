@@ -188,4 +188,88 @@ class PostsController extends AppController {
 		$this->Session->setFlash(__('Post was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+        
+        public function admin_search() {
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Post']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Post']['q'], array('encode' => false));
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Post.title LIKE' => '%' . $q . '%',
+                                                'Post.body LIKE' => '%' . $q . '%',
+                                                'Post.created LIKE' => '%' . $q . '%',
+                                            
+					),
+				),
+			),
+
+             ),
+                    'limit' => 7
+       );
+                $posts = $this->paginate('Post');
+                $this->set(compact('q','posts'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		//$this->set(compact('q', 'nodes'));
+	}
+        
+        
+                public function search() {
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Post']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Post']['q'], array('encode' => false));
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Post.title LIKE' => '%' . $q . '%',
+                                                'Post.body LIKE' => '%' . $q . '%',
+                                                'Post.created LIKE' => '%' . $q . '%',
+                                            
+					),
+				),
+				array(
+					'OR' => array(
+						'Category.visibility_groups' => '',
+						'Category.visibility_groups LIKE' => '%"' . $this->roleId . '"%',
+					),
+				),
+			),
+
+             ),
+                    'limit' => 7
+       );
+                $posts = $this->paginate('Post');
+                $this->set(compact('q','posts'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		//$this->set(compact('q', 'nodes'));
+	}
 }

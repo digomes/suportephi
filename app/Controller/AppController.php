@@ -89,13 +89,13 @@ class AppController extends Controller {
            //menu usuarios 
             array(
                 'title' => 'Users',
-                //'url' => array('controller' => 'users', 'action' => 'index'),
+                'url' => array('controller' => 'users', 'action' => 'index'),
                 'permissions' => array('1', '2', '3', '4', '5', '6', '7'),
                 'children' => array(
                     array(
                         'title' => 'List Users',
                         'url' => array('controller' => 'users', 'action' => 'index'),
-                        'permissions' => array('1'),
+                        'permissions' => array('1', '2', '3', '4', '5', '6'),
                     ),
                     array(
                         'title' => 'Add Users',
@@ -124,7 +124,7 @@ class AppController extends Controller {
      //menu Grupo       
             array(
                 'title' => 'Groups',
-                //'url' => array('controller' => 'groups', 'action' => 'index'),
+                'url' => array('controller' => 'groups', 'action' => 'index'),
                 'permissions' => array('1'),
                 'children' => array(
                     array(
@@ -141,7 +141,7 @@ class AppController extends Controller {
  // Menu Posts           
             array(
                 'title' => 'Posts',
-                //'url' => array('controller' => 'acl', 'action' => 'index'),
+                'url' => array('controller' => 'posts', 'action' => 'index'),
                 'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                 'children' => array(
                     array(
@@ -163,7 +163,7 @@ class AppController extends Controller {
             ), 
                     array(
                         'title' => 'Categories',
-                        //'url' => array('controller' => 'categories', 'action' => 'admin_index'),
+                        'url' => array('controller' => 'categories', 'action' => 'index'),
                         'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                         'children' => array(
                             array(
@@ -185,7 +185,7 @@ class AppController extends Controller {
                     ),
                     array(
                         'title' => 'Images',
-                        //'url' => array('controller' => 'images', 'action' => 'admin_index'),
+                        'url' => array('controller' => 'images', 'action' => 'index'),
                         'permissions' => array('1'),
                         'children' => array(
                             array(
@@ -200,7 +200,7 @@ class AppController extends Controller {
                     ),
                     array(
                         'title' => 'Types',
-                        //'url' => array('controller' => 'types', 'action' => 'admin_index'),
+                        'url' => array('controller' => 'types', 'action' => 'index'),
                         'permissions' => array('1'),
                         'children' => array(
                             array(
@@ -215,7 +215,7 @@ class AppController extends Controller {
                     ),
                     array(
                         'title' => 'Parts',
-                        //'url' => array('controller' => 'types', 'action' => 'admin_index'),
+                        'url' => array('controller' => 'parts', 'action' => 'index'),
                         'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                         'children' => array(
                             array(

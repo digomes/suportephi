@@ -1,19 +1,20 @@
-<?php
 
-/**
- * Descrição do arquivo login
- *
- * @descrição
- * @versão 
- * @autor diego
- * @data 01/11/2012
- */
-echo $this->Form->create('User', array('action' => 'login'));
-echo $this->Form->inputs(array(
-    'legend' => __('Login'),
-    'username',
-    'password'
-));
-echo $this->Form->end('Login');
-?>
-<?php echo $this->Html->link("Forget Password ?",array("controller"=>"users","action"=>"forgetpwd")); ?>
+<div class="users form">
+	<?php echo $this->Form->create('User', array('url' => array('controller' => 'users', 'action' => 'login')));?>
+		<fieldset>
+		<?php
+			echo $this->Form->input('username', array('label' => 'Nome de Usuário'));
+			echo $this->Form->input('password', array('label' => 'Senha'));
+		?>
+		</fieldset>
+	<?php
+		echo $this->Html->link(__('Forgot password?'), array(
+			'admin' => false,
+			'controller' => 'users',
+			'action' => 'forgetpwd',
+		), array(
+			'class' => 'forgot',
+		));
+		echo $this->Form->end(__('Log In'));
+	?>
+</div>

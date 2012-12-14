@@ -34,7 +34,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'password' => array(
+		/*'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Digite uma senha',
@@ -43,7 +43,7 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 		'group_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
@@ -130,7 +130,10 @@ class User extends AppModel {
         
         
     public function beforeSave($options = array()) {
-        $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        //$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        if (!empty($this->data['User']['password'])) {
+            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        }
         return true;
     }
     

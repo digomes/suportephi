@@ -1,3 +1,13 @@
+        <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
+	<fieldset>
+
+	<?php
+		echo $this->Form->input('q', array('label' => 'Digite um termo para realizar a busca'));
+	?>
+	</fieldset>
+        <?php echo $this->Form->end(__('Buscar')); ?>
+<br />
+
 	<?php
 		//$i = 0;
 		foreach ($posts as $post):
@@ -6,10 +16,11 @@
 	<div id="node-1" class="node node-type-blog">
 		<h2><?php echo $this->Html->link($post['Post']['title'], array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?></h2>
                 <div class="node-info">
-                    <!--<span class="author">
-                        Autor: 
-                    </span>-->
+                    <!-<span class="author">
+                        Autor: <?php echo $post['User']['name']; ?> |
+                    </span>
                     <span class="date">
+                        Categoria : <?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?> | 
                         Postado em : <?php echo $post['Post']['created']; ?>
                     </span>
                     <div class="node-more-info">
@@ -33,7 +44,7 @@
 	<div class="paging">
             	<?php
 		echo $this->Paginator->prev('<< ' . __('Previous  '), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ' | '));
+		echo $this->Paginator->numbers(array('separator' => '  '));
 		echo $this->Paginator->next(__('  Next') . ' >>', array(), null, array('class' => 'next disabled'));
 	?>
         </div>

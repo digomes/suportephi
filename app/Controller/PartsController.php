@@ -1,11 +1,13 @@
 <?php
-App::uses('AppController', 'Controller');
+App::uses('AppController', 'Controller');  
 /**
  * Parts Controller
  *
  * @property Part $Part
  */
 class PartsController extends AppController {
+    
+//public $paginate = array('limit' => 5);
 
 /**
  * index method
@@ -31,6 +33,41 @@ class PartsController extends AppController {
 		}
 		$this->set('part', $this->Part->read(null, $id));
 	}
+        
+        /**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function lista($id = null) {
+		$this->Part->id = $id;
+		
+
+                
+            $options = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Part.category_id =' => $this->Part->id,
+					),
+				),
+			),
+
+             ),
+                 'order' => array('Part.id' => 'ASC'),
+                 'limit' => 25
+             );
+             $this->paginate = $options;
+             
+             $parts = $this->paginate('Part');
+             //$parts = $this->paginate('Part');
+             $this->set(compact('parts'));
+	}
+        
+	
         
         /**
  * index method
@@ -143,5 +180,80 @@ class PartsController extends AppController {
 		}
 		$this->Session->setFlash(__('Part was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+        
+        
+           public function search() {
+            
+            //$this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Part']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Part']['q'], array('encode' => false));
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+                                                'Part.posicao LIKE' => '%' . $q . '%',
+						'Part.codigo LIKE' => '%' . $q . '%',
+                                                'Part.nome LIKE' => '%' . $q . '%',
+					),
+				),
+			),
+
+             ),
+                    'limit' => 10
+       );
+                $parts = $this->paginate('Part');
+                $this->set(compact('q','parts'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+               	//$this->set(compact('q', 'nodes'));
+	 }
+        
+           public function admin_search() {
+            
+            //$this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Part']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Part']['q'], array('encode' => false));
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+                                                'Part.posicao LIKE' => '%' . $q . '%',
+						'Part.codigo LIKE' => '%' . $q . '%',
+                                                'Part.nome LIKE' => '%' . $q . '%',
+					),
+				),
+			),
+
+             ),
+                    'limit' => 10
+       );
+                $parts = $this->paginate('Part');
+                $this->set(compact('q','parts'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		//$this->set(compact('q', 'nodes'));
 	}
 }
