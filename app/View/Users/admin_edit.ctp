@@ -8,6 +8,7 @@
 		echo $this->Form->input('username');
 		echo $this->Form->input('password', array('value' => ''));
 		echo $this->Form->input('group_id');
+                echo $this->Form->input('workshop_id');
                 echo $this->Form->input('email');
                 echo $this->Form->input('active', array('label' => 'Ativo ?'));
 	?>

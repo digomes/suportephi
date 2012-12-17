@@ -64,9 +64,11 @@ class UsersController extends AppController {
  */
 	public function add() {
             $this->UserId = $this->Session->read('Auth.User.id');
+            $this->WorkShopId = $this->Session->read('Auth.User.Workshop.id');
 		if ($this->request->is('post')) {
 			$this->User->create();
                         $this->request->data['User']['user_id'] = $this->Auth->user('id');
+                        $this->request->data['User']['workshop_id'] = $this->Session->read('Auth.User.Workshop.id');
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -110,7 +112,8 @@ class UsersController extends AppController {
 			}
 		}
 		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
+                $workshops = $this->User->Workshop->find('list');
+		$this->set(compact('groups', 'workshops'));
 	}
 
 /**
@@ -172,7 +175,8 @@ class UsersController extends AppController {
             $this->request->data = $this->User->read(null, $id);
         }
 		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
+                $workshops = $this->User->Workshop->find('list');
+		$this->set(compact('groups', 'workshops'));
 	}
 
 /**

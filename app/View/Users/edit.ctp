@@ -8,6 +8,7 @@
 		echo $this->Form->input('username');
 		echo $this->Form->input('password', array('value' => '', 'label' => 'Senha, caso queira alterar preencha este campo do contrário deixe em branco'));
 		echo $this->Form->input('group_id', array('type' => 'hidden'));
+		echo $this->Form->input('workshop_id', array('type' => 'hidden'));                
                 echo $this->Form->input('email');
                 echo $this->Form->input('active', array('type' => 'hidden', 'label' => 'Ativo ?'));
 	?>

@@ -5,7 +5,8 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php echo $this->Paginator->sort('group_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('Group'); ?></th>
+                        <th><?php echo $this->Paginator->sort('Workshop'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
         </thead>
@@ -18,6 +19,9 @@
 		<td>
 			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
 		</td>
+		<td>
+			<?php echo $this->Html->link($user['Workshop']['codigo'], array('controller' => 'workshops', 'action' => 'view', $user['Workshop']['id'])); ?>
+		</td>                
 		<td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>

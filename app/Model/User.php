@@ -90,7 +90,14 @@ class User extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+		'Workshop' => array(
+			'className' => 'Workshop',
+			'foreignKey' => 'workshop_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)            
 	);
 
 /**

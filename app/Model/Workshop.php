@@ -6,6 +6,7 @@ App::uses('AppModel', 'Model');
  */
 class Workshop extends AppModel {
 
+        public $displayField = 'codigo';
 /**
  * Validation rules
  *
@@ -253,4 +254,20 @@ class Workshop extends AppModel {
 			),
 		),
 	);
+        
+	public $hasMany = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'workshop_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+        );        
 }

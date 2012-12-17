@@ -1,41 +1,25 @@
-<div class="users view">
-<h2><?php  echo __('User'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Username'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Group'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div class="container"> 
+<div class="grid-5-12">
+    <label for=""><?php echo __('Username'); ?></label>
+    <input type="text" value="<?php echo h($user['User']['username']); ?>" readonly="true"/>
+</div>   
+<div class="grid-12-12">
+    <label for=""><?php echo __('Group'); ?></label>
+<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
+</div>   
+<div class="grid-6-12">
+    <label for=""><?php echo __('Created'); ?></label>
+    <input type="text" value="<?php echo h($user['User']['created']); ?>" readonly="true"/>
+</div>   
+<div class="grid-6-12">
+    <label for=""><?php echo __('Modified'); ?></label>
+    <input type="text" value="<?php echo h($user['User']['modified']); ?>" readonly="true" />
+</div>       
+   
 </div>
 
 <div class="related">
-	<h3><?php echo __('Related Posts'); ?></h3>
+	<h3></h3>
 	<?php if (!empty($user['Post'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
