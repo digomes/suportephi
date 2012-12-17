@@ -45,8 +45,7 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-        
-                <br />
+        <br />
         <table>
             <thead>
                 <tr>

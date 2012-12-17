@@ -1,144 +1,120 @@
 <div class="workshops view">
-<h2><?php  echo __('Workshop'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Codigo'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['codigo']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Consultor'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['consultor']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Cnpj'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['cnpj']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Ie'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['ie']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Razaosocial'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['razaosocial']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Rua'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['rua']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Numero'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['numero']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Complemento'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['complemento']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Bairro'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['bairro']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Cidade'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['cidade']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Uf'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['uf']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Cep'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['cep']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Ddd'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['ddd']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Telefone'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['telefone']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Ddd2'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['ddd2']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Telefone2'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['telefone2']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Ddd3'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['ddd3']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Telefone3'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['telefone3']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Responsavel'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['responsavel']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Proprietario'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['proprietario']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Tecnico'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['tecnico']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Skype'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['skype']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Status'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['status']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($workshop['Workshop']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<h2><?php  echo __($workshop['Workshop']['codigo']); ?></h2>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Região'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['consultor']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Cnpj'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['cnpj']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Inscrição Estadual'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['ie']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Status'); ?></label>
+        <input type="text" value="<?php if($workshop['Workshop']['status'] == 1){ echo 'Ativo'; }else{ echo 'Inativo'; } ?>" class="<?php if($workshop['Workshop']['status'] == 1){ echo 'ativo'; }else{ echo 'inativo'; } ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-12-12">
+        <label for=""><?php echo __('Razão Social'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['razaosocial']); ?>" readonly="true"/>
+    </div>
+
+
+    <div class="grid-6-12">
+        <label for=""><?php echo __('Rua'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['rua']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Complemento'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['complemento']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Bairro'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['bairro']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('Cidade'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['cidade']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('UF'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['uf']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('Cep'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['cep']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('DDD'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['ddd']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('Telefone'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['telefone']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-9-12">
+        <label for=""><?php echo __('E - mail'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['email']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-3-12">
+        <label for=""><?php echo __('Skype'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['skype']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('Responsável'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['responsavel']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('Proprietário'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['proprietario']); ?>" readonly="true"/>
+    </div>
+
+    <div class="grid-4-12">
+        <label for=""><?php echo __('Técnico'); ?></label>
+        <input type="text" value="<?php echo h($workshop['Workshop']['tecnico']); ?>" readonly="true"/>
+    </div>
+
+             
 </div>
-<div class="actions">
-	<h3><?php echo __('Menu'); ?></h3>
-        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
-</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Consultor</th>
+                    <th>Regiao</th>
+
+                </tr>    
+            </thead>        
+            <tbody>
+                        <tr>
+                            <td>Sabrina</td>
+                            <td>Sul e Sudeste (MG, ES, RJ)</td>
+                        </tr>
+                        <tr>
+                            <td>Natali</td>
+                            <td>São Paulo</td>
+                        </tr>
+                        <tr>
+                            <td>Luciano</td>
+                            <td>Norte, Nordeste e Centro Oeste</td>
+                        </tr>                        
+            </tbody>
+        </table>

@@ -60,6 +60,7 @@ function () {
 <script type="text/javascript">
 $(document).ready(function(){
    $(".current").css({'background-color' : 'rgba(254,191,1,0.7)'});
+   $(".inativo").attr("readonly", true);
  });
 </script>
 </head>

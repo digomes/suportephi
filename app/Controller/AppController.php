@@ -215,7 +215,7 @@ class AppController extends Controller {
                     ),
                     array(
                         'title' => 'Parts',
-                        'url' => array('controller' => 'parts', 'action' => 'index'),
+                        'url' => array('controller' => 'parts', 'action' => 'search'),
                         'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                         'children' => array(
                             array(
@@ -235,6 +235,24 @@ class AppController extends Controller {
                             ),                             
                         ),                        
                     ),
+            
+                    array(
+                        'title' => 'Workshops',
+                        'url' => array('controller' => 'workshops', 'action' => 'index'),
+                        'permissions' => array('1'),
+                        'children' => array(
+                            array(
+                                'title' => 'List Workshops',
+                                'url' => array('controller' => 'workshops', 'action' => 'index'),
+                                'permissions' => array('1'),
+                            ),
+                            array(
+                                'title' => 'Add Workshops',
+                                'url' => array('controller' => 'workshops', 'action' => 'add'),
+                                'permissions' => array('1'),
+                            ),                           
+                        ),                        
+                    ),            
              //Menu Permissões ACL           
             array(
                 'title' => 'Permissions',

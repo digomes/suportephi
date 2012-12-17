@@ -1,37 +1,70 @@
 <div class="workshops form">
 <?php echo $this->Form->create('Workshop'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Workshop'); ?></legend>
-	<?php
-		echo $this->Form->input('codigo');
-		echo $this->Form->input('consultor');
-		echo $this->Form->input('cnpj');
-		echo $this->Form->input('ie');
-		echo $this->Form->input('razaosocial');
-		echo $this->Form->input('rua');
-		echo $this->Form->input('numero');
-		echo $this->Form->input('complemento');
-		echo $this->Form->input('bairro');
-		echo $this->Form->input('cidade');
-		echo $this->Form->input('uf');
-		echo $this->Form->input('cep');
-		echo $this->Form->input('ddd');
-		echo $this->Form->input('telefone');
-		echo $this->Form->input('ddd2');
-		echo $this->Form->input('telefone2');
-		echo $this->Form->input('ddd3');
-		echo $this->Form->input('telefone3');
-		echo $this->Form->input('email');
-		echo $this->Form->input('responsavel');
-		echo $this->Form->input('proprietario');
-		echo $this->Form->input('tecnico');
-		echo $this->Form->input('skype');
-		echo $this->Form->input('status');
-	?>
+		<legend><h2><?php echo __('Edit Workshop'); ?></h2></legend>
+                
+<div class="grid-3-12">
+    <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
+    <?php echo $this->Form->input('codigo', array('label' => 'Código')); ?>
+</div>
+<div class="grid-3-12">
+<?php echo $this->Form->input('consultor', array('label' => 'Região')); ?>
+</div>
+<div class="grid-3-12">
+<?php echo $this->Form->input('cnpj'); ?>
+</div>
+<div class="grid-3-12">
+<?php echo $this->Form->input('ie', array('label' => 'Inscrição Estadual')); ?>
+</div>
+<div class="grid-12-12">
+<?php echo $this->Form->input('razaosocial', array('type' => 'text', 'label' => 'Razão Social')); ?>
+</div>
+<div class="grid-9-12">
+<?php echo $this->Form->input('rua', array('type' => 'text')); ?>
+</div>                
+<div class="grid-3-12">
+<?php echo $this->Form->input('complemento'); ?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('bairro'); ?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('cidade'); ?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('uf'); ?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('cep');?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('ddd');?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('telefone');?>
+</div>  
+<div class="grid-12-12">
+<?php echo $this->Form->input('email', array('type' => 'text', 'label' => 'E-Mail')); ?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('responsavel');?>
+</div>  
+<div class="grid-3-12">
+<?php echo $this->Form->input('proprietario'); ?>
+</div>                  
+<div class="grid-3-12">
+<?php echo $this->Form->input('tecnico'); ?>
+</div> 
+<div class="grid-3-12">
+<?php echo $this->Form->input('skype'); ?>
+</div> 
+<div class="grid-12-12">
+<?php echo $this->Form->input('status', array('label' => 'Ativo ?')); ?>
+</div> 
+<div class="grid-12-12">
+    <?php echo $this->Form->end(__('Submit')); ?>
+</div>              
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+
 </div>
-<div class="actions">
-	<h3><?php echo __('Menu'); ?></h3>
-        <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'menu')); ?>
-</div>
+

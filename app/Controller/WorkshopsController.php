@@ -93,10 +93,11 @@ class WorkshopsController extends AppController {
 		if (!$this->Workshop->exists()) {
 			throw new NotFoundException(__('Invalid workshop'));
 		}
+                $this->Session->setFlash(__('Para editar os campos em vermelho entre em contato com seu consultor'));
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Workshop->save($this->request->data)) {
 				$this->Session->setFlash(__('The workshop has been saved'));
-				$this->redirect(array('action' => 'index'));
+				//$this->redirect(array('action' => ''));
 			} else {
 				$this->Session->setFlash(__('The workshop could not be saved. Please, try again.'));
 			}
@@ -127,5 +128,44 @@ class WorkshopsController extends AppController {
 		}
 		$this->Session->setFlash(__('Workshop was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+        
+        
+           public function admin_search() {
+            
+            $this->roleId = $this->Session->read('Auth.User.group_id');
+            
+		if (!isset($this->request->data['Workshop']['q'])) {
+			//$this->redirect('/');
+		}
+
+		App::uses('Sanitize', 'Utility');
+		$q = Sanitize::clean($this->request->data['Workshop']['q'], array('encode' => false));
+                
+                $this->paginate = array(
+                    'conditions' => array(
+                        'AND' => array(
+                                    array(
+					'OR' => array(
+						'Workshop.razaosocial LIKE' => '%' . $q . '%',
+                                                'Workshop.codigo LIKE' => '%' . $q . '%',   
+                                                'Workshop.email LIKE' => '%' . $q . '%',
+                                                'Workshop.skype LIKE' => '%' . $q . '%',
+					),
+				),
+			),
+
+             ),
+                    'limit' => 10
+       );
+                $workshops = $this->paginate('Workshop');
+                $this->set(compact('q','workshops'));
+		//$this->set('categories', $this->paginate());
+                
+		
+                
+		//$nodes = $this->paginate('Category');
+		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		//$this->set(compact('q', 'nodes'));
 	}
 }

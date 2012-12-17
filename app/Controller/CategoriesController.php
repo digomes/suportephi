@@ -257,7 +257,7 @@ class CategoriesController extends AppController {
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Category']['q']);
+		$q = Sanitize::clean($this->request->data['Category']['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
@@ -298,7 +298,7 @@ class CategoriesController extends AppController {
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Category']['q']);
+		$q = Sanitize::clean($this->request->data['Category']['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
