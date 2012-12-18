@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 04/12/2012 às 11h58min
+-- Tempo de Geração: 18/12/2012 às 10h00min
 -- Versão do Servidor: 5.5.28
 -- Versão do PHP: 5.3.10-1ubuntu3.4
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `acos` (
   KEY `idx_acos_lft_rght` (`lft`,`rght`),
   KEY `idx_acos_alias` (`alias`),
   KEY `idx_acos_model_foreign_key` (`model`,`foreign_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=201 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=280 ;
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `aros` (
   KEY `idx_aros_lft_rght` (`lft`,`rght`),
   KEY `idx_aros_alias` (`alias`),
   KEY `idx_aros_model_foreign_key` (`model`,`foreign_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `aros_acos` (
   UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`),
   UNIQUE KEY `idx_aros_acos_aro_id_aco_id` (`aro_id`,`aco_id`),
   KEY `aco_id` (`aco_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=187 ;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=58 ;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `descricao` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_imagens_1_idx` (`post_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
@@ -187,6 +187,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(255) NOT NULL,
   `password` char(40) NOT NULL,
   `group_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `workshop_id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tokenhash` text NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
@@ -194,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -224,28 +226,23 @@ CREATE TABLE IF NOT EXISTS `workshops` (
   `ie` varchar(30) NOT NULL,
   `razaosocial` text NOT NULL,
   `rua` text NOT NULL,
-  `numero` varchar(10) NOT NULL,
-  `complemento` varchar(50) NOT NULL,
+  `complemento` varchar(150) DEFAULT NULL,
   `bairro` varchar(30) NOT NULL,
   `cidade` varchar(30) NOT NULL,
   `uf` varchar(3) NOT NULL,
   `cep` varchar(20) NOT NULL,
   `ddd` varchar(3) NOT NULL,
   `telefone` varchar(15) NOT NULL,
-  `ddd2` varchar(3) NOT NULL,
-  `telefone2` varchar(15) NOT NULL,
-  `ddd3` varchar(3) NOT NULL,
-  `telefone3` varchar(15) NOT NULL,
   `email` text NOT NULL,
-  `responsavel` varchar(25) NOT NULL,
+  `responsavel` varchar(25) DEFAULT NULL,
   `proprietario` varchar(25) NOT NULL,
   `tecnico` varchar(25) NOT NULL,
   `skype` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci' AUTO_INCREMENT=300 ;
 
 --
 -- Restrições para as tabelas dumpadas

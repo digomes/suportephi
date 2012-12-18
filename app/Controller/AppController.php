@@ -238,8 +238,8 @@ class AppController extends Controller {
             
                     array(
                         'title' => 'Workshops',
-                        'url' => array('controller' => 'workshops', 'action' => 'index'),
-                        'permissions' => array('1'),
+                        //'url' => array('controller' => 'workshops', 'action' => 'index'),
+                        'permissions' => array('1' ,'2', '3', '4', '5', '6'),
                         'children' => array(
                             array(
                                 'title' => 'List Workshops',
@@ -250,7 +250,12 @@ class AppController extends Controller {
                                 'title' => 'Add Workshops',
                                 'url' => array('controller' => 'workshops', 'action' => 'add'),
                                 'permissions' => array('1'),
-                            ),                           
+                            ),
+                            array(
+                                'title' => 'Edit  Workshop',
+                                'url' => array('controller' => 'workshops', 'action' => 'edit', $this->Session->read('Auth.User.Workshop.id')),
+                                'permissions' => array('1' ,'2', '3', '4', '5', '6'),
+                            ),                                                        
                         ),                        
                     ),            
              //Menu Permissões ACL           
