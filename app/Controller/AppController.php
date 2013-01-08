@@ -257,7 +257,21 @@ class AppController extends Controller {
                                 'permissions' => array('1' ,'2', '3', '4', '5', '6'),
                             ),                                                        
                         ),                        
-                    ),            
+                    ), 
+            
+            array(
+                'title' => 'Downloads',
+                'url' => array('controller' => 'downloads', 'action' => 'index'),
+                'permissions' => array('1'),
+                        'children' => array(
+                            array(
+                                'title' => 'Add Downloads',
+                                'url' => array('controller' => 'downloads', 'action' => 'add'),
+                                'permissions' => array('1'),
+                            ),                                                       
+                        ),  
+
+            ),
              //Menu Permissões ACL           
             array(
                 'title' => 'Permissions',

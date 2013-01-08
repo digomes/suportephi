@@ -117,7 +117,40 @@ class Category extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
+
+		'DownloadsCategory' => array(
+			'className' => 'DownloadsCategory',
+			'foreignKey' => 'category_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+
             
 	);
 
+        
+        public $hasAndBelongsToMany = array(
+		'Download' => array(
+			'className' => 'Download',
+			'joinTable' => 'downloads_categories',
+			'foreignKey' => 'category_id',
+			'associationForeignKey' => 'download_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);
 }

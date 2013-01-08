@@ -181,7 +181,8 @@ class CategoriesController extends AppController {
                 $types = $this->Category->Type->find('list');
                 $users = $this->Category->User->find('list');
                 $groups = $this->Category->User->Group->find('list');
-                $this->set(compact('groups', 'users', 'types'));
+                $downloads = $this->Category->Download->find('list');
+                $this->set(compact('groups', 'users', 'types', 'downloads'));
 	}
 
 /**
@@ -197,8 +198,9 @@ class CategoriesController extends AppController {
 			throw new NotFoundException(__('Invalid category'));
 		}
                 //$this->request->data['Category']['user_id'] = $this->Session->read('Auth.User.id');
-                $this->request->data['Category']['visibility_groups'] = $this->Category->encodeData($this->request->data['Group']['Group']);
+                
 		if ($this->request->is('post') || $this->request->is('put')) {
+                    $this->request->data['Category']['visibility_groups'] = $this->Category->encodeData($this->request->data['Group']['Group']);
 			if ($this->Category->save($this->request->data)) {
 				$this->Session->setFlash(__('The category has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -206,7 +208,13 @@ class CategoriesController extends AppController {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.'));
 			}
 		} else {
-			$this->request->data = $this->Category->read(null, $id);
+			//$this->request->data = $this->Category->read(null, $id);
+               if (empty($this->request->data)) {
+			$data = $this->Category->read(null, $id);
+			$data['Group']['Group'] = $this->Category->decodeData($data['Category']['visibility_groups']);
+			$this->request->data = $data;
+		}
+                        
 		}
                 $types = $this->Category->Type->find('list');
                 $users = $this->Category->User->find('list');

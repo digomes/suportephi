@@ -14,7 +14,7 @@
 	<?php
 
         $parts = $this->requestAction('parts/lista');
-        
+
 	foreach ($category['Part'] as $part): ?>
 	<tr>
 		<td><?php echo h($part['posicao']); ?>&nbsp;</td>

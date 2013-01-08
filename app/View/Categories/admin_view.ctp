@@ -21,6 +21,7 @@
             <li><?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['id']), null, __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?></li>
             <li><?php echo $this->Html->link(__('Informações Técnicas'), array('#', $category['Category']['id']), array('title' => 'info'))?></li>
             <li><?php echo $this->Html->link(__('Lista de Peças'), array('#', $category['Category']['id']), array('title' => 'lista'))?></li>
+            <li><?php echo $this->Html->link(__('Downloads'), array('#', $category['Category']['id']), array('title' => 'downloads'))?></li>
             <li><?php //echo $this->Form->postLink(__('Lista de Peças'), array('controller' => 'parts', 'action' => 'lista', $category['Category']['id']), array('target' => '_blank'))?></li>
         </ul>
 </div>
@@ -92,4 +93,8 @@ if ($category['Category']['created'] != $category['Category']['modified']){
         
 <div id="lista" class="nodes-search">
 <?php echo $this->element('parts', array('id' => $category['Category']['id'])); ?>
+</div>
+
+<div id="downloads" class="nodes-search">
+<?php echo $this->element('downloads', array('id' => $category['Category']['id'])); ?>
 </div>

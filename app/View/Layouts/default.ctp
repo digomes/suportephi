@@ -42,10 +42,10 @@ $cakeDescription = __d('cake_dev', 'Site de Suporte Técnico à Rede Autorizada'
 		echo $this->fetch('script');
                 
                 echo $this->Html->script('ckeditor/ckeditor.js');
-                echo $this->Html->script('ckfinder/ckfinder.js');
                 echo $this->Html->script('jquery.js');
                 echo $this->Html->script('jtabber.js');
                 echo $this->Html->script('jquery.datatables.js');
+                echo $this->Html->script('jquery.datatables.min.js');
                 echo $this->Html->script('jquery.ui.js');                 
                 
 
@@ -76,7 +76,7 @@ $(document).ready(function(){
 		
     </div>
         <div id="nav-container">
-        <div class="container_16">
+        <div class="container_18">
             <div id="nav">
                 <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'sf-menu sf-js-enabled')); ?>
             </div>    

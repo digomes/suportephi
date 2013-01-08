@@ -7,7 +7,7 @@
 		echo $this->Form->input('dir', array('type' => 'hidden'));
 		echo $this->Form->input('mimetype', array('type' => 'hidden'));
 		echo $this->Form->input('filesize', array('type' => 'hidden'));
-		echo $this->Form->input('post_id');
+		echo $this->Form->input('post_id', array('type' => 'select', 'multiple' => 'checkbox', 'label' => 'Posts'));
 		echo $this->Form->input('descricao');
 	?>
 	</fieldset>

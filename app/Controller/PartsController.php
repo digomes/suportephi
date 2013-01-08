@@ -103,14 +103,14 @@ class PartsController extends AppController {
 	public function admin_add() {
             
         $modelClass = 'Part';
-            if ( $this->request->is('post') ) {
+            if ($this->request->is('Post')) {
                 $this->$modelClass->create();
                 $idCategory = $this->request->data['Part']['category_id'];
                 
                 $fixed = array('Part' => array('category_id' => $idCategory));
                 $records_count = $this->$modelClass->find( 'count' );
                 try {
-                    $this->$modelClass->importCSV( $this->request->data[$modelClass]['CsvFile']['tmp_name'], $fixed  );
+                    $this->$modelClass->importCSV( $this->request->data[$modelClass]['CsvFile']['tmp_name'], $fixed );
                     
                 } catch (Exception $e) {
                     $import_errors = $this->$modelClass->getImportErrors();

@@ -152,6 +152,15 @@ div.radio label { font-size: 16px; float: left;  }
 div.input { margin-top: 15px; }
 div.input span.description { font-size: 11px; color: #999; }
 
+input[type=checkbox] {
+	clear: left;
+	float: left;
+	margin: 9px 5px 0px 5px;
+	width: auto;
+}
+div.checkbox label {
+	display: inline;
+}
 
 /**
  * Header
