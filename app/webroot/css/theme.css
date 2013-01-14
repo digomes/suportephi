@@ -60,7 +60,7 @@ form .error-message { color: #ee4b33; }
 .sf-menu { line-height:1.0; }
 .sf-menu ul { position:absolute; top:-999em; width:10em; }
 .sf-menu ul li { width:100%; }
-.sf-menu li:hover { visibility:inherit; }
+.sf-menu li:hover { visibility: inherit; }
 .sf-menu li { float:left; position:relative; }
 .sf-menu a { display:block; position:relative; }
 .sf-menu li:hover ul,
