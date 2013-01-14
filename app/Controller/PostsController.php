@@ -80,6 +80,8 @@ class PostsController extends AppController {
                     
                 
                 }else{
+                    $acessos = $this->Post->field('acessos');
+                    $this->Post->saveField('acessos', $acessos + 1);
                        $this->set(compact('post'));
                 }
                 

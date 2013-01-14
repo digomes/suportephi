@@ -9,6 +9,14 @@ App::uses('AppModel', 'Model');
  */
 class Post extends AppModel {
 
+    public $name = "Post";
+    
+       public $actsAs = array(
+            'LogAction.LogAction' => array(  
+            'fields' => array('id','title','body'),
+            'trackDelete' => true
+            ) 
+        );
 /**
  * Validation rules
  *
