@@ -46,7 +46,8 @@ $cakeDescription = __d('cake_dev', 'Site de Suporte Técnico à Rede Autorizada'
                 echo $this->Html->script('jtabber.js');
                 echo $this->Html->script('jquery.datatables.js');
                 echo $this->Html->script('jquery.datatables.min.js');
-                echo $this->Html->script('jquery.ui.js');                 
+                echo $this->Html->script('jquery.ui.js');
+                echo $this->Html->script('galeria.js');
                 
 
 	?>
@@ -62,6 +63,13 @@ $(document).ready(function(){
    $(".current").css({'background-color' : 'rgba(254,191,1,0.7)'});
    $(".inativo").attr("readonly", true);
  });
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+        tooltip();//active les tooltip simple
+        imagePreview();//active les tooltip image preview
+        screenshotPreview();//active les tooltip lien avec preview
+});
 </script>
 </head>
 <body>

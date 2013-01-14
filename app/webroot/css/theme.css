@@ -98,7 +98,7 @@ ul.sf-menu li li li.sfHover ul { left:10em; top:0; }
 .node .node-more-info { font-size: 13px; color: #666; font-style: italic; display: block; }
 .node .node-info a,
 .node .node-more-info a { font-style: normal; }
-.node .node-body { margin: 20px 0px 15px 0px; }
+.node .node-body { margin: 20px 0px 15px 0px; float: left;}
 .node .node-body ul,
 .node .node-body ol { margin: 10px; }
 .node .node-body ul li { list-style-type: disc; margin: 0px 0px 0px 25px; }

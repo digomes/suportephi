@@ -17,11 +17,11 @@
 		<h2><?php echo $this->Html->link($post['Post']['title'], array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?></h2>
                 <div class="node-info">
                     <!-<span class="author">
-                        Autor: <?php echo $post['User']['name']; ?> |
+                        Autor: <?php echo $post['User']['name']; ?> | 
                     </span>
                     <span class="date">
                         Categoria : <?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?> | 
-                        Postado em : <?php echo $post['Post']['created']; ?>
+                        Postado em : <?php echo $post['Post']['created']; ?> | <b>Total de Visualizações: <?php echo $post['Post']['acessos']; ?></b>
                     </span>
                     <div class="node-more-info">
                         <?php 

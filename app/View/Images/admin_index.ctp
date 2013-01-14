@@ -12,7 +12,7 @@
 	foreach ($images as $image): ?>
 	<tr>
 		<td><?php echo h($image['Image']['id']); ?>&nbsp;</td>
-		<td><?php echo $this->Html->Image('/files/image/filename/'.$image['Image']['dir'].'/'.$image['Image']['filename'], array('alt' => $image['Image']['descricao'], 'title' => $image['Image']['descricao'], 'width' => '150px')) ?>&nbsp;</td>
+		<td><?php echo $this->Html->Image('/files/image/filename/'.$image['Image']['dir'].'/'.$image['Image']['filename'], array('alt' => $image['Image']['descricao'], 'title' => $image['Image']['descricao'], 'width' => '150px', 'height'=>'100px', 'class' => 'preview')) ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['created']); ?>&nbsp;</td>
 		<td><?php echo h($image['Image']['modified']); ?>&nbsp;</td>
 		<td class="actions">
