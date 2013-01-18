@@ -2,7 +2,7 @@
 	<fieldset>
 
 	<?php
-		echo $this->Form->input('q', array('label' => 'Digite um termo para realizar a busca'));
+		echo $this->Form->input('q', array('label' => 'Digite um termo para realizar a busca de informações'));
 	?>
 	</fieldset>
         <?php echo $this->Form->end(__('Buscar')); ?>

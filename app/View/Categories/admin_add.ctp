@@ -1,7 +1,7 @@
 <div class="categories form">
 <?php echo $this->Form->create('Category'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Category'); ?></legend>
+		<legend><h2><?php echo __('Add Category'); ?></h2></legend>
 	<?php
 		echo $this->Form->input('name', array('label' => 'Nome da Categoria'));
                 echo $this->Form->input('user_id', array('label' => 'Selecione o usuário que irá receber o email de notificação'));

@@ -6,26 +6,21 @@
 <div class="grid-12-12">
     <label for=""><?php echo __('Group'); ?></label>
 <?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
-</div>   
-<div class="grid-6-12">
-    <label for=""><?php echo __('Created'); ?></label>
-    <input type="text" value="<?php echo h($user['User']['created']); ?>" readonly="true"/>
-</div>   
-<div class="grid-6-12">
-    <label for=""><?php echo __('Modified'); ?></label>
-    <input type="text" value="<?php echo h($user['User']['modified']); ?>" readonly="true" />
-</div>       
+</div>      
    
 </div>
 
 <div class="related">
 	<h3></h3>
 	<?php if (!empty($user['Post'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" id="codigos">
+        <thead>    
 	<tr>
 		<th><?php echo __('Title'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
+        </thead>
+        <tbody>
 	<?php
 		$i = 0;
 		foreach ($user['Post'] as $post): ?>
@@ -38,6 +33,7 @@
 			</td>
 		</tr>
 	<?php endforeach; ?>
+        </tbody>        
 	</table>
 <?php endif; ?>
 

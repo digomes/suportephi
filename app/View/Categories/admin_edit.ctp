@@ -1,7 +1,7 @@
 <div class="categories form">
 <?php echo $this->Form->create('Category'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Category'); ?></legend>
+		<legend><h2><?php echo __('Edit Category'); ?></h2></legend>
 	<?php
 		echo $this->Form->input('id', array('type' => 'hidden'));
 		echo $this->Form->input('name', array('label' => 'Nome Da Categoria'));

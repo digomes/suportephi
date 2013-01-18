@@ -149,7 +149,7 @@ div.radio legend { font-size: 20px; margin-bottom: 10px; }
 div.radio input { float: left; clear: both; margin-top: 5px; margin-right: 5px; }
 div.radio label { font-size: 16px; float: left;  }
 
-div.input { margin-top: 15px; }
+div.input { margin-top: 2px; }
 div.input span.description { font-size: 11px; color: #999; }
 
 input[type=checkbox] {
@@ -461,7 +461,7 @@ input[type=submit]:active,
 label {
 	display: block;
 	height: auto;
-	margin: 0.2em 0 0.5em;
+	margin: 0.2em 0 0.2em;
 }
 input[type="text"], .formee input[type="password"], .formee input[type="file"], .formee textarea, .formee select{
 	vertical-align: middle;
