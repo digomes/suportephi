@@ -547,10 +547,6 @@ input[type="text"], .formee input[type="password"], .formee input[type="file"], 
         display:none;
 }
 
-.galeria{
-    width: 800px;
-}
-
 .horiz{
     list-style:none; 
     color:#F7F7F7; 

@@ -40,6 +40,14 @@ if ($category['Category']['created'] != $category['Category']['modified']){
 }
 ?>   
 </div>
+<div class="node-body">
+<div class="imageprod">
+<a href="<?php echo $category['Category']['url']; ?>" target="_blank">
+<?php echo $this->Html->Image('/files/category/filename/'.$category['Category']['dir'].'/'.$category['Category']['filename'], array('alt' => $category['Category']['name'], 'title' => $category['Category']['name'], 'width' => '200px')) ?>
+</a>
+</div>
+<?php echo $category['Category']['body']; ?>
+</div>
 </div>
 
 <div id="info" class="nodes-search">

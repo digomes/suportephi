@@ -11,6 +11,23 @@ class Category extends AppModel {
     
         public $name = 'Category';
    
+        public $actsAs = array(
+          'Upload.Upload' => array(
+            'filename' => array(
+                'fields' => array(
+                    'dir' => 'dir',
+                    'type' => 'mimetype',
+                    'size' => 'filesize'
+                ),
+           'thumbnailSizes' => array(
+                    'vga' => '640x480',
+                    'thumb' => '80x80'
+                ),
+            'thumbnailMethod' => 'php'
+            )
+        ),
+            'Encoder'
+    );
         
         /**
  * Behaviors used by the Model
@@ -18,9 +35,7 @@ class Category extends AppModel {
  * @var array
  * @access public
  */
-	public $actsAs = array(
-		'Encoder',
-	);
+
 /**
  * Validation rules
  *

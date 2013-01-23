@@ -4,7 +4,7 @@
          <li><?php echo $this->Form->postLink(__('Delete'), array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), null, __('Are you sure you want to delete # %s?')); ?></li>
      </ul>
 </div>
-<div class="node">
+<div class="nodes">
 <h2><?php echo h($post['Post']['title']); ?></h2>
 <div class="node-info">
     Autor: <span class="author"><?php echo $this->Html->link($post['User']['username'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?></span> |
@@ -33,11 +33,10 @@ if ($post['Post']['created'] != $post['Post']['modified']){
 	<?php if (!empty($post['Image'])): ?>
 
 
-<h3><?php echo __('Imagens'); ?></h3>
+
+
+ <h3><?php echo __('Imagens'); ?></h3>   
 <ul class="galeria">
-    
-
-
 	<?php
 		$i = 0;
 		foreach ($post['Image'] as $image): ?>
@@ -56,4 +55,5 @@ if ($post['Post']['created'] != $post['Post']['modified']){
 	<?php endforeach; ?>
 </ul>
 <?php endif; }?>
+
 </div>

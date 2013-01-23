@@ -10,15 +10,23 @@
 
 .nodes .node h2 { font-size: 26px; }
 
-.node { margin: 0px 0px 15px 0px; }
+.node { margin: 0px 0px 15px 0px;}
 .node h2 a { text-decoration: none; display: block; font-size: 25px;}
 .node h3 { margin: 15px 0px 10px 0px; }
 .node .node-info,
 .node .node-more-info { font-size: 12px; color: #666; font-style: italic; display: block; }
 .node .node-info a,
 .node .node-more-info a { font-style: normal; }
-.node .node-body { margin: 20px 0px 15px 0px; }
+.node .node-body {  margin: 20px 0px 15px 0px; width: 900px; height: 250px; display: block}
+.node .node-body .imageprod {  float:left; width: 200px; height: 200px;}
 .node .node-body ul,
 .node .node-body ol { margin: 10px; }
 .node .node-body ul li { list-style-type: disc; margin: 0px 0px 0px 25px; }
 .node .node-body ol li { list-style-type: decimal; margin: 0px 0px 0px 25px; }
+
+
+
+.nodes { margin: 0px 0px 15px 0px;}
+.nodes .node-info,
+.nodes .node-more-info { font-size: 12px; color: #666; font-style: italic; display: block; }
+.nodes .node-body {  margin: 20px 0px 15px 20px; }
