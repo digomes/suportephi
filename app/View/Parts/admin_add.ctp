@@ -1,18 +1,19 @@
 <div class="parts form">
 <?php echo $this->Form->create('Part', array('type' => 'file')); ?>
 	<fieldset>
-		<legend><?php echo __('Add Part'); ?></legend>
-	<?php
-                echo $this->Form->input('category_id');
-                echo $this->Form->input('CsvFile', array('type' => 'file', 'label' => 'Selecione a lista de Peças'));
-		/*echo $this->Form->input('dir', array('type' => 'hidden'));
+		<legend><?php echo '<h2>Add Part</h2>'; ?></legend>
                 
-		echo $this->Form->input('posicao');
-		echo $this->Form->input('seguranca');
-		echo $this->Form->input('codigo');
-		echo $this->Form->input('nome');
-		echo $this->Form->input('exibe');*/
-	?>
+            <div class="grid-12-12">
+              <?php echo $this->Form->input('category_id', array('type' => 'text', 'id' => 'category-select2')); ?>  
+            </div>
+                
+            <div class="grid-12-12">
+                <?php echo $this->Form->input('CsvFile', array('type' => 'file', 'label' => 'Selecione a lista de Peças')); ?>
+            </div>                
+
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+            <div class="grid-12-12">
+                <?php echo $this->Form->end(__('Submit')); ?>
+            </div>
+
 </div>

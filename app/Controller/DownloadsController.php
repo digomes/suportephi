@@ -131,9 +131,15 @@ class DownloadsController extends AppController {
                             'DownloadsCategory.category_id' => $this->Download->Category->id
                             )
                         )
-                 );       
+                 );  
+                
+                if ($this->request->is('requested')) {
+                    return $downloads;
+                } else {
+                    $this->set(compact('downloads'));
+                
+                }
                        
-                $this->set(compact('downloads'));
                 
                 
 	}

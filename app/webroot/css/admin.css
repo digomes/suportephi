@@ -170,7 +170,7 @@ div.checkbox label {
     font-size: 11px; 
     padding: 3px 0px 3px 0px; 
     color: #ccc; 
-    border-bottom: 1px solid #707070; 
+    border-bottom: 1px solid #C7C7C7; 
     background: rgb(254,191,1); /* Old browsers */
     background: -moz-linear-gradient(top,  rgba(254,191,1,1) 0%, rgba(254,191,1,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,191,1,1)), color-stop(100%,rgba(254,191,1,1))); /* Chrome,Safari4+ */
@@ -256,7 +256,7 @@ li.sfHover > a > .sf-sub-indicator { background-position: -10px -100px; }
 #nav ul li.sfHover > a { background: rgba(255,116,0,1); }
 #nav ul li a.selected { border-bottom: 1px solid #fff; }
 #nav ul li a.selected:hover { background: rgba(255,116,0,1); border-bottom: 1px solid #ccc; }
-#nav ul li a { margin-right: 20px; }
+#nav ul li a { margin-right: 5px; }
 #nav ul li a.last { margin-right: 0px; }
 #nav ul li li a { margin-right: 0px; }
 

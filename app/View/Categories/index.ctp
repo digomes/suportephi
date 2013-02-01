@@ -1,13 +1,29 @@
+<div class="grid-12-12">
+<div class="grid-6-12">       
+ <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
+	<fieldset>
+
+                <?php echo $this->Form->input('q', array('label' => 'Busca por Informações Técnicas')); ?>
+
+            
+	</fieldset>
+        <?php echo $this->Form->end(__('Buscar')); ?>
+
+<br />
+</div>
+<div class="grid-6-12">
         <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
 	<fieldset>
 
-	<?php
-		echo $this->Form->input('q', array('label' => 'Digite o modelo para realizar a busca'));
-	?>
+                
+                    <?php echo $this->Form->input('q', array('label' => 'Busca por Modelo')); ?>
+                
+	
 	</fieldset>
         <?php echo $this->Form->end(__('Buscar')); ?>
+</div> 
+</div>
 <br />
-
 <div class="nodes search">
 
 	<?php
@@ -44,7 +60,7 @@
 	<?php
 		}
 	?>
-
+    <br />
 	<div class="paging">
             	<?php
 

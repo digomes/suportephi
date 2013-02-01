@@ -183,8 +183,8 @@ class PartsController extends AppController {
 	}
         
         
-           public function search() {
-            
+           public function search($peca = null) {
+            $this->request->data['Part']['q'] = $peca;
             //$this->roleId = $this->Session->read('Auth.User.group_id');
             
 		if (!isset($this->request->data['Part']['q'])) {
@@ -220,8 +220,8 @@ class PartsController extends AppController {
                	//$this->set(compact('q', 'nodes'));
 	 }
         
-           public function admin_search() {
-            
+           public function admin_search($peca = null) {
+            $this->request->data['Part']['q'] = $peca;
             //$this->roleId = $this->Session->read('Auth.User.group_id');
             
 		if (!isset($this->request->data['Part']['q'])) {

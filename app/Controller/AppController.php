@@ -21,7 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
-
+App::import('Core', 'l10n');
 /**
  * Application Controller
  *
@@ -41,13 +41,14 @@ class AppController extends Controller {
             )
         ),
         'Session',
-        'Email',  
+        'Email',
+        'Cookie'   
            
     );
        
-        
+    
     public $helpers = array(
-        'Html', 
+        'Html' => array('className' => 'MyHtml'), 
         'Form', 
         'Session',
         'Paginator',
@@ -72,8 +73,8 @@ class AppController extends Controller {
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array('controller' => 'posts', 'action' => 'index');
-        
-        
+
+        $this->_setLanguage();
         //$user = $this->Auth->user();
         $user = $this->Session->read('Auth');
         $this->set(compact('user'));
@@ -82,33 +83,33 @@ class AppController extends Controller {
         'main-menu' => array(
             //Menu Inicio
             array(
-                'title' => 'Home',
+                'title' => __('Home'),
                 'url' => array('controller' => 'posts', 'action' => 'index'),
                 'permissions' => array('1', '2', '3', '4', '5', '6', '7'),
             ),
            //menu usuarios 
             array(
-                'title' => 'Users',
+                'title' => __('Users'),
                 'url' => array('controller' => 'users', 'action' => 'index'),
                 'permissions' => array('1', '2', '3', '4', '5', '6', '7'),
                 'children' => array(
                     array(
-                        'title' => 'List Users',
+                        'title' => __('List Users'),
                         'url' => array('controller' => 'users', 'action' => 'index'),
                         'permissions' => array('1', '2', '3', '4', '5', '6'),
                     ),
                     array(
-                        'title' => 'Add Users',
+                        'title' => __('Add Users'),
                         'url' => array('controller' => 'users', 'action' => 'add'),                     
                         'permissions' => array('1'),    
                     ),
                                         array(
-                        'title' => 'Add Users',
+                        'title' => __('Add Users'),
                         'url' => array('controller' => 'users', 'action' => 'add'),                     
                         'permissions' => array('2', '3', '4', '5', '6', '7'),    
                     ),
                     array(
-                     'title' => 'Edit Profile',
+                     'title' => __('Edit Profile'),
                      'url' => array('controller' => 'users', 'action' => 'edit', $this->Session->read('Auth.User.id')),
                      'permissions' => array('1'),
                      ),
@@ -272,6 +273,18 @@ class AppController extends Controller {
                         ),  
 
             ),
+            array(
+                'title' => 'Highlights',
+                'url' => array('controller' => 'highlights', 'action' => 'index'),
+                'permissions' => array('1'),
+                    'children' => array(
+                        array(
+                            'title' => 'Add Highlights',
+                            'url' => array('controller' => 'highlights', 'action' => 'add'),
+                            'permissions' => array('1'),
+                        )
+                    )
+            ),            
              //Menu Permissões ACL           
             array(
                 'title' => 'Permissions',
@@ -293,6 +306,23 @@ class AppController extends Controller {
 
     }
     
+    public function _setLanguage(){
+        if($this->Cookie->read('lang') && !$this->Session->check('Config.language')){
+            $this->Session->write('Config.language', $this->Cookie->read('lang'));
+        }else if(isset($this->params['language']) && $this->params['language'] != $this->Session->read('Config.language')){
+            $this->Session->write('Config.language', $this->params['language']);
+            $this->Cookie->write('lang', $this->params['language'], false, '20 days');
+        }
+    }
+    
+    public function redirect($url, $status = null, $exit = true) {
+
+        if(!isset($url['language']) && $this->Session->check('Config.language')){
+            $url['language'] = $this->Session->read('Config.language');
+        }
+        
+        parent::redirect($url, $status, $exit);
+    }
     
     function isAuthorized($user) {
          //return false;

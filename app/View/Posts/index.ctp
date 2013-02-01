@@ -1,11 +1,31 @@
-        <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
+<div class="grid-12-12">
+     <div class="grid-11-12">
+        <?php echo $this->element('highlights'); ?>
+    </div>   
+<div class="grid-6-12">       
+ <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
 	<fieldset>
 
-	<?php
-		echo $this->Form->input('q', array('label' => 'Digite um termo para realizar a busca'));
-	?>
+                <?php echo $this->Form->input('q', array('label' => 'Busca por Informações Técnicas')); ?>
+
+            
 	</fieldset>
         <?php echo $this->Form->end(__('Buscar')); ?>
+
+<br />
+</div>
+<div class="grid-6-12">
+        <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
+	<fieldset>
+
+                
+                    <?php echo $this->Form->input('q', array('label' => 'Busca por Modelo')); ?>
+                
+	
+	</fieldset>
+        <?php echo $this->Form->end(__('Buscar')); ?>
+</div> 
+</div>
 <br />
 
 	<?php
@@ -35,12 +55,13 @@
 	</div>
     
 	<?php endforeach; ?>
-        <p>
+        
         <?php
 	//echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	//));
-	?>	</p>
+	?>
+        <br />
 	<div class="paging">
             	<?php
 		echo $this->Paginator->prev('<< ' . __('Previous  '), array(), null, array('class' => 'prev disabled'));

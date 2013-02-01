@@ -6,10 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Category $Category
  */
 class CategoriesController extends AppController {
-    
-    public $paginate = array(
+  
+       public $components = array('RequestHandler');
+       public $paginate = array(
         'limit' => 5
-    );
+       );
 /**
  * index method
  *
@@ -331,4 +332,48 @@ class CategoriesController extends AppController {
 		//$this->set('title_for_layout', __('Search Results: %s', $q));
 		//$this->set(compact('q', 'nodes'));
 	}
+        
+    public function autoComplete() {
+        $this->autoRender = false;
+        $categories = $this->Category->find('all', array(
+            'conditions' => array(
+            'Category.name LIKE' => '%' . $_GET['term'] . '%',
+            )));
+        echo json_encode($this->_encode($categories));
+    }
+    
+    private function _encode($postData) {
+        $temp = array();
+        foreach ($postData as $category) {
+            array_push($temp, array(
+            'id' => $category['Category']['id'],
+            'label' => $category['Category']['name'],
+            'value' => $category['Category']['id'],
+            ));
+        }
+        return $temp;
+    }
+
+    public function select2() {
+        $this->Category->recursive = 0;
+        $this->set('categories', $this->paginate());
+    }
+    
+    public function busca() {
+        $term = $this->request->query['q'];
+        $categories = $this->Category->find('all',array(
+            'conditions' => array(
+                'Category.name LIKE' => '%'.$term.'%'
+            )
+        ));
+
+        $result = array();
+        foreach($categories as $key => $category) {
+            $result[$key]['id'] = (int) $category['Category']['id'];
+            $result[$key]['text'] = $category['Category']['name'];
+        }
+        $categories = $result;
+        
+        $this->set(compact('categories'));
+    }          
 }

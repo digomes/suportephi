@@ -36,19 +36,38 @@ $cakeDescription = __d('cake_dev', 'Site de Suporte Técnico à Rede Autorizada'
                 echo $this->Html->css('960');
                 echo $this->Html->css('post');
                 echo $this->Html->css('datatables');
+                echo $this->Html->css(array(
+                        //'/bootstrap/css/bootstrap.min',
+                       // 'jquery-ui-1.8.4.custom',
+                        'select2/select2'
+                        ));                
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-                
+                echo $this->Html->script(array(
+                    'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
+                    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
+                    'bootstrap.min',
+                    'select2.min',
+                    'cbunny',
+                    'autoCategory',
+                    'addCampo'
+                    ));                      
                 echo $this->Html->script('ckeditor/ckeditor.js');
-                echo $this->Html->script('jquery.js');
+                //echo $this->Html->script('jquery.js');
                 echo $this->Html->script('jtabber.js');
                 echo $this->Html->script('jquery.datatables.js');
                 echo $this->Html->script('jquery.datatables.min.js');
-                echo $this->Html->script('jquery.ui.js');
+                //echo $this->Html->script('jquery.ui.js');
                 echo $this->Html->script('galeria.js');
-                
+     
+                $cbunny = array(
+                    'APP_PATH' => Router::url('/',true)
+                );
+
+                echo $this->Html->scriptBlock('var CbunnyObj = ' . $this->Javascript->object($cbunny) . ';');
+
 
 	?>
 <script type="text/javascript">
@@ -74,6 +93,11 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="wrapper">
+    <?php 
+    echo $this->Form->Postlink('Português', array('language'=>'bra'));
+    echo $this->Html->link('English', array('language'=>'eng'));
+   
+    ?>
     <div id="header">
         			<?php echo $this->Html->link(
 					$this->Html->Image('/img/logo.png', array('alt' => '', 'title' => '', 'width' => '140px', 'height' => '80px;')),
@@ -86,7 +110,7 @@ $(document).ready(function(){
         <div id="nav-container">
         <div class="container_18">
             <div id="nav">
-                <?php echo $this->MenuBuilder->build('main-menu', array('class' => 'sf-menu sf-js-enabled')); ?>
+                <?php echo _($this->MenuBuilder->build('main-menu', array('class' => 'sf-menu sf-js-enabled'))); ?>
             </div>    
         </div>
     </div>

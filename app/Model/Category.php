@@ -10,7 +10,13 @@ class Category extends AppModel {
 
     
         public $name = 'Category';
-   
+
+        /**
+ * Behaviors used by the Model
+ *
+ * @var array
+ * @access public
+ */   
         public $actsAs = array(
           'Upload.Upload' => array(
             'filename' => array(
@@ -29,12 +35,7 @@ class Category extends AppModel {
             'Encoder'
     );
         
-        /**
- * Behaviors used by the Model
- *
- * @var array
- * @access public
- */
+
 
 /**
  * Validation rules

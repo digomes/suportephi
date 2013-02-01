@@ -133,6 +133,20 @@ class User extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
                 ),
+            
+                'Highlight' => array(
+                        'className' => 'Highlight',
+                        'foreignKey' => 'user_id',
+                        'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+                ),            
 	);
         
         

@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class WorkshopsController extends AppController {
 
+    
+    public $components = array('RequestHandler');
 /**
  * index method
  *
@@ -168,4 +170,48 @@ class WorkshopsController extends AppController {
 		//$this->set('title_for_layout', __('Search Results: %s', $q));
 		//$this->set(compact('q', 'nodes'));
 	}
+        
+    public function autoComplete() {
+        $this->autoRender = false;
+        $workshops = $this->WorkShop->find('all', array(
+            'conditions' => array(
+            'Workshop.codigo LIKE' => '%' . $_GET['term'] . '%',
+            )));
+        echo json_encode($this->_encode($workshops));
+    }
+    
+    private function _encode($postData) {
+        $temp = array();
+        foreach ($postData as $workshop) {
+            array_push($temp, array(
+            'id' => $workshop['Workshop']['id'],
+            'label' => $workshop['Workshop']['codigo'],
+            'value' => $workshop['Workshop']['id'],
+            ));
+        }
+        return $temp;
+    }
+
+    public function select2() {
+        $this->Workshop->recursive = 0;
+        $this->set('workshops', $this->paginate());
+    }
+    
+    public function search() {
+        $term = $this->request->query['q'];
+        $workshops = $this->Workshop->find('all',array(
+            'conditions' => array(
+                'Workshop.codigo LIKE' => '%'.$term.'%'
+            )
+        ));
+
+        $result = array();
+        foreach($workshops as $key => $workshop) {
+            $result[$key]['id'] = (int) $workshop['Workshop']['id'];
+            $result[$key]['text'] = $workshop['Workshop']['codigo'];
+        }
+        $workshops = $result;
+        
+        $this->set(compact('workshops'));
+    }    
 }

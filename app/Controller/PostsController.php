@@ -32,7 +32,8 @@ class PostsController extends AppController {
                         //'Category.id =' => $this->Post->Category->id,
                         )
                     ),
-               'limit' => 4
+               'limit' => 4,
+               'order' => 'Post.acessos Desc'
              );
                 $posts = $this->paginate('Post');
                 $this->set(compact('posts'));

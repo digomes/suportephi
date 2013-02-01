@@ -7,7 +7,6 @@
 	</fieldset>
         <?php echo $this->Form->end(__('Buscar')); ?>
 <br />
-
 <div class="nodes search">
 
 	<?php
@@ -23,7 +22,8 @@
 		foreach ($categories as $category) {
 			
 	?>
-	<div id="node-1" class="node node-type-blog">
+	
+              <div id="node-1" class="node node-type-blog">      
 		<h2><?php echo $this->Html->link($category['Category']['name'], array('action' => 'view', $category['Category']['id'])); ?></h2>
                 <div class="node-info">
                     <span class="author">
@@ -44,7 +44,7 @@
 	<?php
 		}
 	?>
-
+    <div class="grid-12-12">
 	<div class="paging">
             	<?php
 
@@ -54,4 +54,5 @@
 	?>
         </div>
         <?php } ?>
+    </div>    
 </div>

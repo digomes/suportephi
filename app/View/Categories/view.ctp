@@ -40,12 +40,22 @@ if ($category['Category']['created'] != $category['Category']['modified']){
 }
 ?>   
 </div>
+<div class="node-body">
+<div class="imageprod">
+<a href="<?php echo $category['Category']['url']; ?>" target="_blank">
+<?php echo $this->Html->Image('/files/category/filename/'.$category['Category']['dir'].'/'.$category['Category']['filename'], array('alt' => $category['Category']['name'], 'title' => $category['Category']['name'], 'width' => '200px')) ?>
+</a>
+</div>
+<?php echo $category['Category']['body']; ?>
+</div>
 </div>
 
 <div id="info" class="nodes-search">
 <br />
-<?php if (!empty($category['Post'])):  ?>
 <h3><?php echo __('Informações do Produto'); ?></h3>
+
+            <?php if (!empty($category['Post'])): ?>
+
 	<?php
 		//$i = 0;
 		foreach ($posts as $post):
@@ -86,7 +96,7 @@ if ($category['Category']['created'] != $category['Category']['modified']){
 		echo $this->Paginator->next(__('  Next') . ' >>', array(), null, array('class' => 'next disabled'));
 	?>
         </div>
-        <?php else :  echo '<div id="flashMessage" class="message"><h3>Nenhuma informação cadastrada para esse produto.</h3></div>'; endif; ?>
+        <?php endif; ?>
 </div>
         
 <div id="lista" class="nodes-search">
