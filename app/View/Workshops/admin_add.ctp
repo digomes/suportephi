@@ -1,7 +1,7 @@
 <div class="workshops form">
 <?php echo $this->Form->create('Workshop'); ?>
 	<fieldset>
-		<legend><h2><?php echo __('Edit Workshop'); ?></h2></legend>
+		<legend><h2><?php echo __('Add Workshops'); ?></h2></legend>
                 
 <div class="grid-3-12">
     <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>

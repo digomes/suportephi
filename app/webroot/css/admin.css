@@ -561,3 +561,16 @@ img.preview{
         padding:5px;
         color:#fff;
 }
+
+div.language { padding: 0px 0px 12px 0px; }
+div.language ul { float: right; }
+div.language ul li { margin: 0px 5px 0px 0px; padding: 0px; list-style: none; float: left; }
+
+div.language{
+
+
+    background: #fff; 
+ 
+    height: 5px; 
+    background: rgba(254,191,1,1); /* Old browsers */
+}

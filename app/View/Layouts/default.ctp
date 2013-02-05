@@ -93,11 +93,34 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="wrapper">
-    <?php 
-    echo $this->Form->Postlink('Português', array('language'=>'bra'));
-    echo $this->Html->link('English', array('language'=>'eng'));
-   
-    ?>
+<div class="language">
+    <ul>
+        <li>
+<?php echo $this->Html->link(
+					$this->Html->Image('/img/br.png', array('alt' => '', 'title' => '')),
+					array('language'=>'bra'),
+					array('escape' => false)
+				);
+?>                      
+        </li>
+        <li>
+<?php echo $this->Html->link(
+					$this->Html->Image('/img/en.png', array('alt' => '', 'title' => '')),
+					array('language'=>'eng'),
+					array('escape' => false)
+				);
+?>            
+        </li>
+        <li>
+<?php echo $this->Html->link(
+					$this->Html->Image('/img/es.png', array('alt' => '', 'title' => '')),
+					array('language'=>'esp'),
+					array('escape' => false)
+				);
+?>              
+        </li>
+    </ul>
+</div>    
     <div id="header">
         			<?php echo $this->Html->link(
 					$this->Html->Image('/img/logo.png', array('alt' => '', 'title' => '', 'width' => '140px', 'height' => '80px;')),

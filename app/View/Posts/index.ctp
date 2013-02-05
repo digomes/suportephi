@@ -6,11 +6,11 @@
  <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
 	<fieldset>
 
-                <?php echo $this->Form->input('q', array('label' => 'Busca por Informações Técnicas')); ?>
+                <?php echo $this->Form->input('q', array('label' => __('Search for Technical Information'))); ?>
 
             
 	</fieldset>
-        <?php echo $this->Form->end(__('Buscar')); ?>
+        <?php echo $this->Form->end(__('Search')); ?>
 
 <br />
 </div>
@@ -19,11 +19,11 @@
 	<fieldset>
 
                 
-                    <?php echo $this->Form->input('q', array('label' => 'Busca por Modelo')); ?>
+                    <?php echo $this->Form->input('q', array('label' => __('Search by Model'))); ?>
                 
 	
 	</fieldset>
-        <?php echo $this->Form->end(__('Buscar')); ?>
+        <?php echo $this->Form->end(__('Search')); ?>
 </div> 
 </div>
 <br />

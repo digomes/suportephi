@@ -1453,7 +1453,7 @@ msgid "New Type"
 msgstr "Novo Tipo"
 
 msgid "Add User"
-msgstr "Adicionar Ususário"
+msgstr "Adicionar Usuário"
 
 msgid "Edit User"
 msgstr "Editar Usuário"
@@ -1508,3 +1508,150 @@ msgstr "Autor"
 
 msgid "Home"
 msgstr "Inicio"
+
+msgid "List Users"
+msgstr "Listar Usuários"
+
+msgid "Add Users"
+msgstr "Add Usuários"
+
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+msgid "Posts"
+msgstr "Informações"
+
+msgid "List Posts"
+msgstr "Listar Informações"
+
+msgid "Add Posts"
+msgstr "Adicionar Informações"
+
+msgid "Models"
+msgstr "Modelos"
+
+msgid "List Models"
+msgstr "Listar Modelos"
+
+msgid "Add Models"
+msgstr "Adicionar Modelos"
+
+msgid "Parts"
+msgstr "Peças"
+
+msgid "Add Parts"
+msgstr "Adicionar Peças"
+
+msgid "List Parts"
+msgstr "Listar Peças"
+
+msgid "Where Used"
+msgstr "Onde é Usado"
+
+msgid "Workshops"
+msgstr "Posto"
+
+msgid "List Workshops"
+msgstr "Listar Postos"
+
+msgid "Add Workshops"
+msgstr "Adicionar Posto"
+
+msgid "Edit Workshop"
+msgstr "Editar Posto"
+
+msgid "Groups"
+msgstr "Grupos"
+
+msgid "Add Groups"
+msgstr "Adicionar Grupo"
+
+msgid "List Groups"
+msgstr "Listar Grupos"
+
+msgid "Images"
+msgstr "Imagens"
+
+msgid "List Images"
+msgstr "Listar Imagens"
+
+msgid "Add Images"
+msgstr "Adicionar Imagens"
+
+msgid "Types"
+msgstr "Tipos de Produtos"
+
+msgid "List Types"
+msgstr "Listar Tipos"
+
+msgid "Add Types"
+msgstr "Adicionar Tipos"
+
+msgid "Highlights"
+msgstr "Destaques"
+
+msgid "Add Highlights"
+msgstr "Adicionar Destaque"
+
+msgid "Logout"
+msgstr "Sair"
+
+msgid "Name of Model"
+msgstr "Nome do Modelo"
+
+msgid "Submit"
+msgstr "Enviar"
+
+msgid "Image"
+msgstr "Imagem"
+
+msgid "Select the user you will receive email notification"
+msgstr "Selecione o usuário que irá receber o email de notificação"
+
+msgid "Select the type of product"
+msgstr "Selecione o tipo do produto"
+
+msgid "Write a brief description (maximum size use font with 12px)"
+msgstr "Faça uma breve descrição, (Usar fonte com tamanho máximo 12px)"
+
+msgid "Copy and Paste the URL of Manufacturer Site"
+msgstr "Copie e Cole a URL do Site do Fabricante"
+
+msgid "Select the group you can view this product"
+msgstr "Selecione o grupo que poderá visualizar este produto"
+
+msgid "Search for Technical Information"
+msgstr "Pesquisa por Informações Técnicas"
+
+msgid "Search by Model"
+msgstr "Pesquisa por Modelo"
+
+msgid "Posted in"
+msgstr "Postado em"
+
+msgid " | Modified:"
+msgstr " |  Modificado em: "
+
+msgid "Previous  "
+msgstr "Anterior  "
+
+msgid "  Next"
+msgstr "  Próximo"
+
+msgid "<div id="flashMessage" class="message">There are no products registered</div>"
+msgstr "<div id="flashMessage" class="message">Não há nenhum produto cadastrado</div>"
+
+msgid "View"
+msgstr "Ver"
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""

@@ -114,7 +114,7 @@ class AppController extends Controller {
                      'permissions' => array('1'),
                      ),
                      array(
-                     'title' => 'Edit Profile',
+                     'title' => __('Edit Profile'),
                      'url' => array('controller' => 'users', 'action' => 'edit', $this->Session->read('Auth.User.id')),
                      'permissions' => array('2', '3', '4', '5', '6', '7'),
                      ),
@@ -124,16 +124,16 @@ class AppController extends Controller {
             ),
      //menu Grupo       
             array(
-                'title' => 'Groups',
+                'title' => __('Groups'),
                 'url' => array('controller' => 'groups', 'action' => 'index'),
                 'permissions' => array('1'),
                 'children' => array(
                     array(
-                        'title' => 'List Groups',
+                        'title' => __('List Groups'),
                         'url' => array('controller' => 'groups', 'action' => 'index'),
                     ),                    
                     array(
-                        'title' => 'Add Groups',
+                        'title' => __('Add Groups'),
                         'url' => array('controller' => 'groups', 'action' => 'add'),
                     )
                  ),                        
@@ -141,96 +141,86 @@ class AppController extends Controller {
             
  // Menu Posts           
             array(
-                'title' => 'Posts',
+                'title' => __('Posts'),
                 'url' => array('controller' => 'posts', 'action' => 'index'),
                 'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                 'children' => array(
                     array(
-                        'title' => 'List Posts',
+                        'title' => __('List Posts'),
                         'url' => array('controller' => 'posts', 'action' => 'index'),
                         //'permissions' => array('1'),
-                        'children' => array(
-                            array(
-                                'title' => 'Add Posts',
-                                'url' => array('controller' => 'posts', 'action' => 'add'),
-                                'permissions' => array('1'),
-                            ), 
-   
-                        ),
-                        
-                    
-                    ),               
+                    ),
+                      array(
+                        'title' => __('Add Posts'),
+                        'url' => array('controller' => 'posts', 'action' => 'add'),
+                        'permissions' => array('1'),
+                      ),  
                 )
             ), 
                     array(
-                        'title' => 'Categories',
+                        'title' => __('Models'),
                         'url' => array('controller' => 'categories', 'action' => 'index'),
                         'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                         'children' => array(
                             array(
-                                'title' => 'List Categories',
+                                'title' => __('List Models'),
                                 'url' => array('controller' => 'categories', 'action' => 'index'),
-                                'permissions' => array('1'),
-                            ),
-                            array(
-                                'title' => 'List Categories',
-                                'url' => array('controller' => 'categories', 'action' => 'index'),
-                                'permissions' => array('2', '3', '4', '5', '6', '7'),
+                                'permissions' => array('1', '2', '3', '4', '5', '6', '7'),
                             ),                                
                             array(
-                                'title' => 'Add Categories',
+                                'title' => __('Add Models'),
                                 'url' => array('controller' => 'categories', 'action' => 'add'),
                                 'permissions' => array('1'),
                             ),
                         ),                        
                     ),
                     array(
-                        'title' => 'Images',
+                        'title' => __('Images'),
                         'url' => array('controller' => 'images', 'action' => 'index'),
                         'permissions' => array('1'),
                         'children' => array(
                             array(
-                                'title' => 'List Images',
+                                'title' => __('List Images'),
                                 'url' => array('controller' => 'images', 'action' => 'index'),
                             ),                            
                             array(
-                                'title' => 'Add Images',
+                                'title' => __('Add Images'),
                                 'url' => array('controller' => 'images', 'action' => 'add'),
                             ),
                         ),                        
                     ),
                     array(
-                        'title' => 'Types',
+                        'title' => __('Types'),
                         'url' => array('controller' => 'types', 'action' => 'index'),
                         'permissions' => array('1'),
                         'children' => array(
                             array(
-                                'title' => 'List Types',
+                                'title' => __('List Types'),
                                 'url' => array('controller' => 'types', 'action' => 'index'),
                             ),
                             array(
-                                'title' => 'Add Types',
+                                'title' => __('Add Types'),
                                 'url' => array('controller' => 'types', 'action' => 'add'),
                             ),                            
                         ),                        
                     ),
                     array(
-                        'title' => 'Parts',
+                        'title' => __('Parts'),
                         'url' => array('controller' => 'parts', 'action' => 'search'),
                         'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                         'children' => array(
                             array(
-                                'title' => 'List Parts',
+                                'title' => __('List Parts'),
                                 'url' => array('controller' => 'parts', 'action' => 'index'),
                                 'permissions' => array('1'),
                             ),
                             array(
-                                'title' => 'Add Parts',
+                                'title' => __('Add Parts'),
                                 'url' => array('controller' => 'parts', 'action' => 'add'),
                                 'permissions' => array('1'),
                             ),
                             array(
-                                'title' => 'Where Used',
+                                'title' => __('Where Used'),
                                 'url' => array('controller' => 'parts', 'action' => 'search'),
                                 'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
                             ),                             
@@ -238,22 +228,22 @@ class AppController extends Controller {
                     ),
             
                     array(
-                        'title' => 'Workshops',
+                        'title' => __('Workshops'),
                         //'url' => array('controller' => 'workshops', 'action' => 'index'),
                         'permissions' => array('1' ,'2', '3', '4', '5', '6'),
                         'children' => array(
                             array(
-                                'title' => 'List Workshops',
+                                'title' => __('List Workshops'),
                                 'url' => array('controller' => 'workshops', 'action' => 'index'),
                                 'permissions' => array('1'),
                             ),
                             array(
-                                'title' => 'Add Workshops',
+                                'title' => __('Add Workshops'),
                                 'url' => array('controller' => 'workshops', 'action' => 'add'),
                                 'permissions' => array('1'),
                             ),
                             array(
-                                'title' => 'Edit  Workshop',
+                                'title' => __('Edit Workshop'),
                                 'url' => array('controller' => 'workshops', 'action' => 'edit', $this->Session->read('Auth.User.Workshop.id')),
                                 'permissions' => array('1' ,'2', '3', '4', '5', '6'),
                             ),                                                        
@@ -261,12 +251,12 @@ class AppController extends Controller {
                     ), 
             
             array(
-                'title' => 'Downloads',
+                'title' => __('Downloads'),
                 'url' => array('controller' => 'downloads', 'action' => 'index'),
                 'permissions' => array('1'),
                         'children' => array(
                             array(
-                                'title' => 'Add Downloads',
+                                'title' => __('Add Downloads'),
                                 'url' => array('controller' => 'downloads', 'action' => 'add'),
                                 'permissions' => array('1'),
                             ),                                                       
@@ -274,12 +264,12 @@ class AppController extends Controller {
 
             ),
             array(
-                'title' => 'Highlights',
+                'title' => __('Highlights'),
                 'url' => array('controller' => 'highlights', 'action' => 'index'),
                 'permissions' => array('1'),
                     'children' => array(
                         array(
-                            'title' => 'Add Highlights',
+                            'title' => __('Add Highlights'),
                             'url' => array('controller' => 'highlights', 'action' => 'add'),
                             'permissions' => array('1'),
                         )
@@ -287,13 +277,13 @@ class AppController extends Controller {
             ),            
              //Menu Permissões ACL           
             array(
-                'title' => 'Permissions',
+                'title' => __('Permissions'),
                 'url' => array('controller' => 'acl', 'action' => 'index'),
                 'permissions' => array('1'),
             ),
             
             array(
-                'title' => 'Logout',
+                'title' => __('Logout'),
                 'url' => array('controller' => 'users', 'action' => 'logout'),
                 'permissions' => array('1' ,'2', '3', '4', '5', '6', '7'),
             ),             

@@ -1,22 +1,34 @@
+<div class="grid-12-12">
+     <div class="grid-11-12">
+        <?php echo $this->element('highlights'); ?>
+    </div>   
+<div class="grid-6-12">       
+ <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
+	<fieldset>
+
+                <?php echo $this->Form->input('q', array('label' => __('Search for Technical Information'))); ?>
+
+            
+	</fieldset>
+        <?php echo $this->Form->end(__('Search')); ?>
+
+<br />
+</div>
+<div class="grid-6-12">
         <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
 	<fieldset>
 
-	<?php
-		echo $this->Form->input('q', array('label' => 'Digite o modelo para realizar a busca'));
-	?>
+                
+                    <?php echo $this->Form->input('q', array('label' => __('Search by Model'))); ?>
+                
+	
 	</fieldset>
-        <?php echo $this->Form->end(__('Buscar')); ?>
+        <?php echo $this->Form->end(__('Search')); ?>
+</div> 
+</div>
 <br />
 <div class="nodes search">
-
-	<?php
-        //start if
-            if(count($categories) == '0'){
-                echo '<div id="flashMessage" class="message">Nenhuma categoria disponível para visualizar</div>';
-            }else{
-
-
-	?>
+ <?php //if(count($categories) == '0'){ echo __('<div id="flashMessage" class="message">There are no products registered</div>'); }?> 
 
 	<?php
 		foreach ($categories as $category) {
@@ -30,14 +42,14 @@
                        
                     </span>
                     <span class="date">
-                        Postado em : <?php echo $category['Category']['created']; ?>
+                        <?php echo __('Posted in');?> : <?php echo $category['Category']['created']; ?>                         <?php 
+                            if ($category['Category']['created'] != $category['Category']['modified']){
+                            echo __(' | Modified : '). $category['Category']['modified'];  
+                            }
+                        ?> 
                     </span>
                     <div class="node-more-info">
-                        <?php 
-                            if ($category['Category']['created'] != $category['Category']['modified']){
-                            echo '  Modificado em: '. $category['Category']['modified'];  
-                            }
-                        ?>  
+ 
                     </div>
                 </div>
 	</div>
@@ -53,6 +65,5 @@
 		echo $this->Paginator->next(__(' Next') . ' >>', array(), null, array('class' => 'next disabled'));
 	?>
         </div>
-        <?php } ?>
     </div>    
 </div>
