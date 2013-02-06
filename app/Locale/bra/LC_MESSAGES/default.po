@@ -13,13 +13,13 @@ msgstr ""
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 #
 msgid "Site down for maintenance"
-msgstr "Site em Manute��o"
+msgstr "Site em Manutenção"
 
 msgid "Attachments"
-msgstr "Acess�rios"
+msgstr "Acessórios"
 
 msgid "Add Attachment"
-msgstr "Adicionar Acess�rios"
+msgstr "Adicionar Acessórios"
 
 msgid "The Attachment has been saved"
 msgstr "O acessório foi salvo"
@@ -579,8 +579,17 @@ msgstr "Sua conta foi registrada com sucesso. Um e-mail foi enviado com instruç
 msgid "Account activated successfully."
 msgstr "Conta ativada com sucesso."
 
+msgid "Password"
+msgstr "Senha"
+
+msgid "Password Confirm"
+msgstr "Confirmar Senha"
+
 msgid "Forgot Password"
-msgstr "Esqueceu sua senha"
+msgstr "Esqueceu sua senha ?"
+
+msgid "Save"
+msgid "Salvar"
 
 msgid "Invalid username."
 msgstr "Usuário Inválido."
@@ -596,6 +605,36 @@ msgstr "Ocorreu um erro.Por favor, tente novamente."
 
 msgid "Your password has been reset successfully."
 msgstr "Sua senha foi redefinida com sucesso."
+
+msgid "Please Provide Your Email Adress that You used to Register with Us"
+msgstr "Favor fornecer seu Endereço de Email Que você usou para registrar-se aqui"
+
+msgid "Check Your Email To Reset your password"
+msgstr "Verifique seu Email para resetar sua senha"
+
+msgid "This account is not active, Please contact the site administrator"
+msgstr "Esta conta  não está ativa, Favor entre em contato com o administrador do site "
+
+msgid "Email does Not Exist"
+msgstr "Email não existe em nossa base de dados"
+
+msgid "Password Has been Updated"
+msgstr "Senha alterada com Sucesso !"
+
+msgid "This Token has already been used"
+msgstr "Esse Token já foi utilizado"
+
+msgid "Thank you for using our site!"
+msgstr "Obrigado por ter usado o nosso site !"
+
+msgid "Your username or password was incorrect."
+msgstr "Seu Usuário ou Senha estão incorretos"
+
+msgid "User was not deleted"
+msgstr "Usuário não foi deletado"
+
+msgid "Username"
+msgstr "Nome de Usuário"
 
 msgid "Log in"
 msgstr "Log in"
@@ -1644,8 +1683,8 @@ msgstr "<div id="flashMessage" class="message">Não há nenhum produto cadastrad
 msgid "View"
 msgstr "Ver"
 
-msgid ""
-msgstr ""
+msgid "Enter your email address"
+msgstr "Digite o seu email"
 
 msgid ""
 msgstr ""

@@ -1,5 +1,5 @@
 <div class="users form">
-<h2 class="hightitle"><?php echo __('Forget Password'); ?></h2>
+<h2 class="hightitle"><?php echo __('Forgot Password'); ?></h2>
 
 <?php //echo $this->Form->create('User', array('action' => 'reset')); ?>
  
@@ -22,6 +22,6 @@ echo $this->Form->input('password_confirm',array("type"=>"password","name"=>"dat
 ?>
 
  
-<?php echo $this->Form->end('Save');?>
+<?php echo $this->Form->end(__('Save'));?>
 </form>
 </div>

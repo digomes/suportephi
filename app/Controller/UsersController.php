@@ -226,7 +226,7 @@ class UsersController extends AppController {
                 if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Your username or password was incorrect.');
+                $this->Session->setFlash(__('Your username or password was incorrect.'));
                 }
             }
         }
@@ -236,18 +236,18 @@ class UsersController extends AppController {
                 if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Your username or password was incorrect.');
+                $this->Session->setFlash(__('Your username or password was incorrect.'));
                 }
             }
         }
 
         public function logout() {
-            $this->Session->setFlash('Obrigado por ter usado o nosso site !');
+            $this->Session->setFlash(__('Thank you for using our site!'));
             $this->redirect($this->Auth->logout());
         }
         
        public function admin_logout() {
-            $this->Session->setFlash('Obrigado por ter usado o nosso site !');
+            $this->Session->setFlash(__('Thank you for using our site!'));
             $this->redirect($this->Auth->logout());
         }
         
@@ -260,7 +260,7 @@ class UsersController extends AppController {
         {
             if(empty($this->data['User']['email']))
             {
-                $this->Session->setFlash('Please Provide Your <span id="IL_AD1" class="IL_AD">Email Adress</span> that You used to Register with Us');
+                $this->Session->setFlash(__('Please Provide Your Email Adress that You used to Register with Us'));
             }
             else
             {
@@ -300,17 +300,17 @@ class UsersController extends AppController {
                                 $this->set('ms', $ms);
                                 $this->Email->send();
                                 $this->set('smtp_errors', $this->Email->smtpError);
-                            $this->Session->setFlash(__('Check Your Email To <span id="IL_AD9" class="IL_AD">Reset your password</span>', true));
+                            $this->Session->setFlash(__('Check Your Email To Reset your password', true));
  
                             //============EndEmail=============//
                         }else{
-                            $this->Session->setFlash('Error <span id="IL_AD11" class="IL_AD">Generating</span> Reset link');
+                            $this->Session->setFlash(__('Error Generating Reset link'));
                         }
                     }else{
-                        $this->Session->setFlash('This <span id="IL_AD2" class="IL_AD">Account is</span> not Active yet.Check Your mail to activate it');
+                        $this->Session->setFlash(__('This account is not active, Please contact the site administrator'));
                     }
                 }else{
-                    $this->Session->setFlash('Email does Not Exist');
+                    $this->Session->setFlash(__('Email does Not Exist'));
                 }
             }
         }
@@ -332,7 +332,7 @@ class UsersController extends AppController {
                     if($this->User->validates(array('fieldList'=>array('password','password_confirm')))){
                         if($this->User->save($this->User->data))
                         {
-                            $this->Session->setFlash('Password Has been Updated');
+                            $this->Session->setFlash(__('Password Has been Updated'));
                             $this->redirect(array('controller'=>'users','action'=>'login'));
                         }
  
@@ -345,7 +345,7 @@ class UsersController extends AppController {
             }
             else
             {
-                $this->Session->setFlash('Token Corrupted,Please Retry.the reset link work only for once.');
+                $this->Session->setFlash(__('This Token has already been used'));
             }
         }
  

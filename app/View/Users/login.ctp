@@ -2,12 +2,15 @@
 <div class="users form">
 	<?php echo $this->Form->create('User', array('url' => array('controller' => 'users', 'action' => 'login')));?>
 		<fieldset>
-		<?php
-			echo $this->Form->input('username', array('label' => 'Nome de Usuário'));
-			echo $this->Form->input('password', array('label' => 'Senha'));
-		?>
-		</fieldset>
-	<?php
+                    <div class="grid-12-12">
+                        <?php echo $this->Form->input('username'); ?>
+                    </div>
+                    <div class="grid-12-12">
+                        <?php echo $this->Form->input('password'); ?>
+                    </div>
+		
+                <div class="grid-12-12">
+                    <?php
 		echo $this->Html->link(__('Forgot password?'), array(
 			'admin' => false,
 			'controller' => 'users',
@@ -15,6 +18,11 @@
 		), array(
 			'class' => 'forgot',
 		));
-		echo $this->Form->end(__('Log In'));
-	?>
+                    ?>
+                </div>
+    
+                <div class="grid-12-12">
+                    	<?php echo $this->Form->end(__('Log In')); ?>
+                </div>
+              </fieldset>      
 </div>
