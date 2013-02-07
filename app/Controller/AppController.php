@@ -42,7 +42,10 @@ class AppController extends Controller {
         ),
         'Session',
         'Email',
-        'Cookie'   
+        'Cookie',
+        'Security',
+        'RequestHandler',
+        'Acl.AclManager'    
            
     );
        
@@ -73,7 +76,9 @@ class AppController extends Controller {
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array('controller' => 'posts', 'action' => 'index');
-
+           
+        $this->AclManager->set_session_permissions();
+        
         $this->_setLanguage();
         //$user = $this->Auth->user();
         $user = $this->Session->read('Auth');
@@ -278,7 +283,7 @@ class AppController extends Controller {
              //Menu Permissões ACL           
             array(
                 'title' => __('Permissions'),
-                'url' => array('controller' => 'acl', 'action' => 'index'),
+                'url' => array('controller' => 'acl', 'action' => 'acos'),
                 'permissions' => array('1'),
             ),
             
