@@ -84,6 +84,16 @@ class AppController extends Controller {
         $user = $this->Session->read('Auth');
         $this->set(compact('user'));
         
+        $this->Auth->authenticate = array(
+            AuthComponent::ALL => array(
+                'userModel' => 'User',
+                'scope' => array(
+                    'User.active' => 1
+                ),
+            ),
+            'Form'
+        );
+        
     $menu = array(
         'main-menu' => array(
             //Menu Inicio

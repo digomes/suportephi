@@ -97,7 +97,16 @@ class Category extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+                'Skype' => array(
+			'className' => 'Skype',
+			'foreignKey' => 'skype_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+            
+            
 	);
 
 /**

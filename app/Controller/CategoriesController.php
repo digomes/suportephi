@@ -183,7 +183,8 @@ class CategoriesController extends AppController {
                 $users = $this->Category->User->find('list');
                 $groups = $this->Category->User->Group->find('list');
                 $downloads = $this->Category->Download->find('list');
-                $this->set(compact('groups', 'users', 'types', 'downloads'));
+                $skypes = $this->Category->Skype->find('list');
+                $this->set(compact('groups', 'users', 'types', 'downloads', 'skypes'));
 	}
 
 /**
