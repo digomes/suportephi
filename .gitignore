@@ -1,12 +1,10 @@
-/app/Config
 /app/tmp
 /lib/Cake/Console/Templates/skel/tmp/
-/plugins
 /vendors
 /build
 /dist
 .DS_Store
 /tags
-/app/webroot/uploads/.thumbs/
+/app/webroot/uploads/
 /.fr-4r2C7v/
 /.fr-XSXKPj/
