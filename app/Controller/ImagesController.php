@@ -7,6 +7,9 @@ App::uses('AppController', 'Controller');
  */
 class ImagesController extends AppController {
 
+    
+       public $helpers = array('Js');
+       public $components = array('RequestHandler');  
 
 /**
  * view method
@@ -64,8 +67,9 @@ class ImagesController extends AppController {
 				$this->Session->setFlash(__('The image could not be saved. Please, try again.'));
 			}
 		}
+                $categories = $this->Image->Post->Category->find('list');
 		$posts = $this->Image->Post->find('list');
-		$this->set(compact('posts'));
+		$this->set(compact('posts', 'categories'));
 	}
 
 /**

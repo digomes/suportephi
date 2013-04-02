@@ -35,6 +35,10 @@
                 </div>
                 
                 <div class="grid-12-12">
+                 <?php echo $this->Form->input('skype_id', array('label' => __('Select the skype of product'))); ?>   
+                </div> 
+                
+                <div class="grid-12-12">
                  <?php 
                     echo $this->Form->input('dir', array('type' => 'hidden'));
                     echo $this->Form->input('mimetype', array('type' => 'hidden'));

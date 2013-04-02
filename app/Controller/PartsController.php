@@ -184,15 +184,16 @@ class PartsController extends AppController {
         
         
            public function search() {
-           // $this->request->data['Part']['q'] = $peca;
+           //$this->request->query['q'] = $p;
             //$this->roleId = $this->Session->read('Auth.User.group_id');
             
-		if (!isset($this->request->data['Part']['q'])) {
+		if (!isset($this->request->query['q'])) {
 			//$this->redirect('/');
+                    //$this->Session->setFlash(__('Please'));
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Part']['q'], array('encode' => false));
+		$q = Sanitize::clean($this->request->query['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
@@ -212,24 +213,22 @@ class PartsController extends AppController {
                 $parts = $this->paginate('Part');
                 $this->set(compact('q','parts'));
 		//$this->set('categories', $this->paginate());
-                
-		
-                
 		//$nodes = $this->paginate('Category');
-		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		$this->set('title_for_layout', __('Search Results: %s', $q));
                	//$this->set(compact('q', 'nodes'));
+                
 	 }
         
            public function admin_search() {
             //$this->request->data['Part']['q'] = $peca;
             //$this->roleId = $this->Session->read('Auth.User.group_id');
             
-		if (!isset($this->request->data['Part']['q'])) {
+		if (!isset($this->request->query['q'])) {
 			//$this->redirect('/');
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Part']['q'], array('encode' => false));
+		$q = Sanitize::clean($this->request->query['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(

@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class PostsController extends AppController {
 
+    public $helpers = array('Js');
+    public $components = array('RequestHandler');  
     public $paginate = array('limit' => 5);
     
 /**
@@ -38,7 +40,7 @@ class PostsController extends AppController {
                 $posts = $this->paginate('Post');
                 $this->set(compact('posts'));
 	}
-        
+            
         }
         
         /**
@@ -197,12 +199,12 @@ class PostsController extends AppController {
             
             $this->roleId = $this->Session->read('Auth.User.group_id');
             
-		if (!isset($this->request->data['Post']['q'])) {
+		if (!isset($this->request->query['q'])) {
 			//$this->redirect('/');
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Post']['q'], array('encode' => false));
+		$q = Sanitize::clean($this->request->query['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
@@ -227,21 +229,21 @@ class PostsController extends AppController {
 		
                 
 		//$nodes = $this->paginate('Category');
-		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		$this->set('title_for_layout', __('Search Results: %s', $q));
 		//$this->set(compact('q', 'nodes'));
 	}
         
         
-                public function search() {
+        public function search() {
             
             $this->roleId = $this->Session->read('Auth.User.group_id');
             
-		if (!isset($this->request->data['Post']['q'])) {
+		if (!isset($this->request->query['q'])) {
 			//$this->redirect('/');
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Post']['q'], array('encode' => false));
+		$q = Sanitize::clean($this->request->query['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
@@ -272,7 +274,41 @@ class PostsController extends AppController {
 		
                 
 		//$nodes = $this->paginate('Category');
-		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		$this->set('title_for_layout', __('Search Results: %s', $q));
 		//$this->set(compact('q', 'nodes'));
+	}
+        
+	public function admin_duplicate($id = null) {
+		$this->Post->id = $id;
+		if (!$this->Post->exists()) {
+			throw new NotFoundException(__('Invalid post'));
+		}
+                $this->request->data['Post']['user_id'] = $this->Auth->user('id');
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->Post->save($this->request->data)) {
+				$this->Session->setFlash(__('The post has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The post could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->Post->read(null, $id);
+		}
+		$users = $this->Post->User->find('list');
+		$this->set(compact('users'));
+                $categories = $this->Post->Category->find('list');
+		$this->set(compact('categories'));
+	}
+        
+	public function admin_getByCategory() {
+		$category_id = $_GET['data']['Image']['category_id'];
+ 
+		$posts = $this->Post->find('list', array(
+			'conditions' => array('Post.category_id' => $category_id),
+			'recursive' => -1
+			));
+ 
+		$this->set('posts',$posts);
+		$this->layout = 'ajax';
 	}
 }

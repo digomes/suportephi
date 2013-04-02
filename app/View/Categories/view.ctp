@@ -25,6 +25,16 @@
             <li><?php //echo $this->Form->postLink(__('Lista de Peças'), array('controller' => 'parts', 'action' => 'lista', $category['Category']['id']), array('target' => '_blank'))?></li>
         </ul>
 </div>
+<div class="actions">
+    <ul>
+                <li>
+            <a href="skype:<?php echo $category['Skype']['skype']; ?>?call">
+                <?php echo $this->Html->Image('skype.png', array('alt' => 'Realizar Chamada Via Skype', 'title' => 'Realizar Chamada Via Skype', 'width' => '15px')) ?>
+                Skype
+            </a>
+            </li>
+    </ul>
+</div>
 
 <div class="node">
 <h2><?php echo $category['Category']['name']; ?></h2>

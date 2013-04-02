@@ -3,7 +3,7 @@
         <?php echo $this->element('highlights'); ?>
     </div>   
 <div class="grid-6-12">       
- <?php echo $this->Form->create('Post', array('action' => 'search')); ?>
+ <?php echo $this->Form->create('Post', array('action' => 'search', 'type' => 'get')); ?>
 	<fieldset>
 
                 <?php echo $this->Form->input('q', array('label' => __('Search for Technical Information'))); ?>
@@ -15,7 +15,7 @@
 <br />
 </div>
 <div class="grid-6-12">
-        <?php echo $this->Form->create('Category', array('action' => 'search')); ?>
+        <?php echo $this->Form->create('Category', array('action' => 'search', 'type' => 'get')); ?>
 	<fieldset>
 
                 

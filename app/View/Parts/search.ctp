@@ -1,4 +1,4 @@
-        <?php echo $this->Form->create('Part', array('action' => 'search')); ?>
+        <?php echo $this->Form->create('Part', array('action' => 'search', 'type' => 'get')); ?>
 	<fieldset>
 
 	<?php

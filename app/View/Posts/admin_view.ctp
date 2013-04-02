@@ -1,6 +1,7 @@
 <div class="actions">
      <ul>
          <li><?php echo $this->Html->link(__('Edit'), array('controller' => 'posts', 'action' => 'edit', $post['Post']['id'])); ?></li>
+         <li><?php echo $this->Html->link(__('Duplicate'), array('controller' => 'posts', 'action' => 'duplicate', $post['Post']['id'])); ?></li>
          <li><?php echo $this->Form->postLink(__('Delete'), array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), null, __('Are you sure you want to delete # %s?')); ?></li>
      </ul>
 </div>

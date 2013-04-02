@@ -28,7 +28,8 @@
 	//Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
         Router::connect('/', array('controller' => 'posts', 'action' => 'index'));
         Router::connect('/admin', array('admin' => true, 'controller' => 'posts', 'action' => 'index'));
-        Router::connect('/admin', array('controller' => 'pages', 'action' => 'index', 'admin' => true));
+        Router::connect('/admin', array('admin' => true, 'controller' => 'pages', 'action' => 'index'));
+        Router::connect('/admin/manager/', array('admin' => true, 'controller' => 'acl', 'action' => 'index'));
         Router::connect('/:language/:controller/:action/*',
                         array(),
                         array('language' => '[a-z]{3}'));
@@ -48,6 +49,9 @@
                       array('language' => 'bra|eng|esp'));
         
      
+        
+
+	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

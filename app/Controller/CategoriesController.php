@@ -7,7 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class CategoriesController extends AppController {
   
-       public $components = array('RequestHandler');
+       public $helpers = array('Js');
+       public $components = array('RequestHandler');  
        public $paginate = array(
         'limit' => 5
        );
@@ -180,7 +181,7 @@ class CategoriesController extends AppController {
 			}
 		}
                 $types = $this->Category->Type->find('list');
-                $users = $this->Category->User->find('list');
+                $users = $this->Category->User->find('list', array('conditions' => array('User.group_id' => '1')));
                 $groups = $this->Category->User->Group->find('list');
                 $downloads = $this->Category->Download->find('list');
                 $skypes = $this->Category->Skype->find('list');
@@ -219,9 +220,10 @@ class CategoriesController extends AppController {
                         
 		}
                 $types = $this->Category->Type->find('list');
-                $users = $this->Category->User->find('list');
+                $users = $this->Category->User->find('list', array('conditions' => array('User.group_id' => '1')));
                 $groups = $this->Category->User->Group->find('list');
-                $this->set(compact('groups', 'users', 'types'));
+                $skypes = $this->Category->Skype->find('list');
+                $this->set(compact('groups', 'users', 'types', 'skypes'));
 	}
 
 /**
@@ -262,12 +264,12 @@ class CategoriesController extends AppController {
             
             $this->roleId = $this->Session->read('Auth.User.group_id');
             
-		if (!isset($this->request->data['Category']['q'])) {
+		if (!isset($this->request->query['q'])) {
 			//$this->redirect('/');
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Category']['q'], array('encode' => false));
+		$q = Sanitize::clean($this->request->query['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
@@ -303,12 +305,12 @@ class CategoriesController extends AppController {
             
             $this->roleId = $this->Session->read('Auth.User.group_id');
             
-		if (!isset($this->request->data['Category']['q'])) {
+		if (!isset($this->request->query['q'])) {
 			//$this->redirect('/');
 		}
 
 		App::uses('Sanitize', 'Utility');
-		$q = Sanitize::clean($this->request->data['Category']['q'], array('encode' => false));
+		$q = Sanitize::clean($this->request->query['q'], array('encode' => false));
                 
                 $this->paginate = array(
                     'conditions' => array(
@@ -330,7 +332,7 @@ class CategoriesController extends AppController {
 		
                 
 		//$nodes = $this->paginate('Category');
-		//$this->set('title_for_layout', __('Search Results: %s', $q));
+		$this->set('title_for_layout', __('Search Results: %s', $q));
 		//$this->set(compact('q', 'nodes'));
 	}
         
